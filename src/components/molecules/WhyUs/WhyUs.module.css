@@ -1,0 +1,74 @@
+.textCard {
+    font-weight: 600;
+}
+
+.titleBlock {
+    font-size: 56px;
+    font-weight: 700;
+}
+
+.section {
+  margin-top: 150px;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+/* DESKTOP */
+@media (min-width: 1024px) {
+  .section {
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+}
+
+.titleBlock {
+  max-width: 527px;
+  display: flex;
+  align-items:flex-start;
+  gap: 12px;
+
+}
+
+.grid {
+  display: grid;
+  gap: 0px;
+}
+
+/* tablet */
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* desktop */
+@media (min-width: 1024px) {
+  .grid {
+    width: 670px;
+  }
+}
+
+.card {
+  background: var(--green-400);
+  border-radius: 32px;
+  padding: 24px 32px 24px 32px;
+  position: relative;
+  min-height: 179px;
+  max-height: 203px;
+  display: flex;
+  align-items: flex-start;
+}
+
+
+.dot {
+  position: absolute;
+  bottom: 24px;
+  left: 24px;
+}
+
+.arrow {
+  margin-left: 8px;
+  margin-top: 16px;
+}

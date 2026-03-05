@@ -1,0 +1,59 @@
+.button {
+  display: inline-flex;              
+  align-items: center;
+  justify-content: center;
+
+  padding: 12px 40px;                
+  gap: 8px;                          
+
+  border-radius: 48px;
+  border: none;
+  cursor: pointer;
+
+  font-size: 16px;
+  font-weight: 500;
+
+  transition: 0.2s ease;
+}
+
+.textButton {
+  font-weight: 700;
+  font-family: Manrope;
+}
+
+
+.primary {
+  background: var(--green-400);
+  color: var(--black-400);
+}
+
+.secondary {
+  background: var(--yellow-400);
+  color: var(--black-400);
+}
+
+
+
+.lg {
+  padding: 16px 40px;
+  font-size: 20px;
+}
+
+.md {
+  padding: 16px 32px;
+  font-size: 18px;
+}
+
+.sm {
+  padding: 12px 24px;
+  font-size: 16px;
+}
+
+
+
+.icon {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+

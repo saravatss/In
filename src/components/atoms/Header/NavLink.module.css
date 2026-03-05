@@ -1,0 +1,9 @@
+.navLink {
+  color: var(--black-200);
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.navLink:hover {
+  opacity: 0.6;
+}

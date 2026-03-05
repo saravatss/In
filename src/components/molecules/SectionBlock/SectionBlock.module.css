@@ -1,0 +1,33 @@
+.block {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.block h2 {
+  font-size: var(--fs-title-3);
+  font-weight: 600;
+}
+
+/* textarea */
+.textarea {
+  width: 100%;
+  min-height: 200px;
+  padding: 20px 24px;
+  border-radius: 20px;
+  border: none;
+  resize: none;
+
+  background: var(--green-100);
+  font-size: var(--fs-text-main);
+  line-height: var(--lh-115);
+  font-family: inherit;
+  color: var(--black-100);
+
+  outline: none;
+  transition: 0.2s ease;
+}
+
+.textarea:focus {
+  box-shadow: 0 0 0 2px var(--green-400);
+}

@@ -1,0 +1,95 @@
+.wrapper {
+  margin: 40px 0 60px;
+}
+
+.searchWrapper {
+  position: relative;
+  margin-bottom: 16px;
+}
+
+.searchInput {
+  width: 100%;
+  padding: 18px 32px 18px 56px;
+  border-radius: 32px;
+  border: none;
+  background: #F7EFF5;
+  font-size: 20px;
+  outline: none;
+}
+
+.searchIcon {
+  position: absolute;
+  left: 24px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 18px;
+  pointer-events: none;
+}
+
+.filtersRow {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.dropdown {
+  position: relative;
+}
+
+.dropdownButton {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 20px;
+  border-radius: 40px;
+  border: none;
+  background: #F7EFF5;
+  cursor: pointer;
+  font-size: 14px;
+  min-width: 180px;
+}
+
+.arrow {
+  width: 14px;
+  transition: transform 0.2s ease;
+}
+
+.rotate {
+  transform: rotate(180deg);
+}
+
+.dropdownMenu {
+  position: absolute;
+  top: 110%;
+  left: 0;
+  background: #F7EFF5;
+  border-radius: 20px;
+  padding: 8px 0;
+  min-width: 220px;
+  z-index: 10;
+}
+
+.dropdownItem {
+  padding: 10px 16px;
+  cursor: pointer;
+}
+
+.dropdownItem:hover {
+  background: var(--black-400);
+}
+
+.clearFilters {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  color:var(--black-400);
+  padding: 12px 4px;
+  transition: 0.2s ease;
+}
+
+.clearFilters:hover {
+  color:var(--black-400);
+}

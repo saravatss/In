@@ -1,0 +1,214 @@
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* ================= DESKTOP ================= */
+
+.headerBlock {
+  display: flex;
+  justify-content: space-between;
+  gap: 60px;
+  margin-bottom: 60px;
+  margin-top: 32px;
+}
+
+.left {
+  flex: 1;
+}
+
+.right {
+  width: 420px;
+  flex-shrink: 0;
+}
+
+.authorRow {
+  margin-top: 40px;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.specialist {
+  font-size: 20px;
+  color: var(--black-400);
+  font-family: Manrope;
+}
+
+.author {
+  background: var(--green-400);
+  padding: 8px 24px;
+  border-radius: 20px;
+  color: var(--black-400);
+  font-weight: 600;
+  font-family: Manrope;
+  font-size: 24px;
+}
+
+.tags {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.tag {
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 14px;
+}
+
+.previewImage {
+  width: 100%;
+  display: block;
+}
+
+.content {
+  max-width: 785px;
+  line-height: 1.85;
+  font-size: 18px;
+  color: var(--black-400);
+  margin: 48px auto 0;
+}
+
+
+/* Абзацы */
+.content p {
+  margin-bottom: 28px;
+}
+
+/* Подзаголовки внутри статьи */
+.content h2 {
+  font-size: 30px;
+  font-weight: 600;
+  margin-top: 72px;
+  margin-bottom: 24px;
+}
+
+/* Списки */
+.content ul {
+  margin: 32px 0;
+  padding-left: 24px;
+}
+
+.content li {
+  margin-bottom: 18px;
+  line-height: 1.8;
+}
+
+/* Маркеры аккуратные */
+.content li::marker {
+  color: var(--black-400);
+}
+
+/* Выделения внутри списка */
+.content strong {
+  font-weight: 600;
+}
+
+
+
+.content h2 {
+  margin-top: 40px;
+  margin-bottom: 16px;
+}
+
+.date {
+    background-color: var(--green-400);
+    padding: 4px;
+}
+
+.share {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.shareText {
+  font-size: 16px;
+}
+
+.shareIcon {
+  width: 32px;
+  height: 32px;
+}
+
+.footerRow {
+  margin-top: 60px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 24px;
+  color: var(--black-400);
+  font-weight: 700;
+}
+
+/* ================= TABLET ================= */
+
+@media (max-width: 1024px) {
+  .headerBlock {
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .right {
+    width: 100%;
+    order: -1; /* 🔥 Картинка уходит наверх */
+  }
+
+  .previewImage {
+    border-radius: 20px;
+  }
+
+  .content {
+    max-width: 100%;
+    font-size: 17px;
+  }
+}
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 768px) {
+
+  .title {
+    font-size: 28px;
+    line-height: 1.2;
+  }
+
+  .authorRow {
+    margin-top: 16px;
+  }
+
+  .tag {
+    font-size: 13px;
+    padding: 5px 12px;
+  }
+
+  .content {
+    font-size: 16px;
+  }
+
+  .footerRow {
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-start;
+  }
+}
+
+/* ================= SMALL MOBILE ================= */
+
+@media (max-width: 480px) {
+  .page {
+    padding: 40px 14px;
+  }
+
+  .title {
+    font-size: 24px;
+  }
+
+  .content {
+    font-size: 15px;
+  }
+}

@@ -1,0 +1,18 @@
+.container {
+  padding: 16px 24px; /* mobile */
+  margin: 0 auto;
+}
+
+/* tablet */
+@media (min-width: 768px) {
+  .container {
+    padding: 24px;
+  }
+}
+
+/* desktop */
+@media (min-width: 1024px) {
+  .container {
+    padding: 40px;
+  }
+}

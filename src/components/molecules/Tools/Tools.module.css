@@ -1,0 +1,43 @@
+.section {
+  margin-top: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 12px;
+  row-gap: 4px;
+}
+
+
+@media (min-width: 768px) {
+  .section {
+    margin-top: 24px;
+  }
+
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+}
+
+
+@media (min-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+
+  .section {
+    margin-top: 56px;
+  }
+}
+
+@media (min-width: 1360px) {
+  .grid {
+    justify-content: space-between;
+  }
+}

@@ -1,66 +1,51 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+import { WhyUs } from "@/components/molecules/WhyUs/WhyUs";
+import { Header } from "@/components/organisms/Header/Header.jsx";
+import { Tools } from "@/components/molecules/Tools/Tools";
+import { CasesSection } from "@/components/organisms/CasesSection/CaseSection";
+import { Footer } from "@/components/organisms/Footer/Footer";
+import Interview from "@/components/organisms/Interview/Interview";
+import { casesData } from "@/data/cases";
 
 export default function Home() {
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
+      <div>
+        <Header
+            title={
+              <>
+                Ускоряем рутину,<br />
+                упрощаем жизнь
+              </>
+            }
+            description="Запись и анализ сессий с нами стал намного проще!"
         />
-        <div className={styles.intro}>
-          <h1>гавгавгавл</h1>
-          <p>
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className={styles.secondary}
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
+        <Tools />
+        <WhyUs />
+        <CasesSection
+  title="Самые популярные кейсы"
+  cases={casesData.slice(0, 6)}
+  showButton
+/>
+        <Interview
+          interviews={[
+            {
+              id: 1,
+              title: "Марией Бризова о становлении психолога в кризис",
+              description:
+                "Опытный терапевт рассказывает, как первые сложные клиенты формируют профессиональный взгляд.",
+              image: "/images/interview1.svg",
+              alt: "Мария Бризова",
+            },
+            {
+              id: 2,
+              title: "Ирина Захарова о границах в терапии",
+              description:
+                "Психотерапевт со стажем в 10 лет делится лайфхаками: как расставлять личные рамки, чтобы не выгорать от чужих историй. Реальные кейсы и простые шаги для баланса в работе.",
+              image: "/images/interview2.svg",
+              alt: "Ирина Захарова",
+            },
+          ]}
+        />
+        <Footer />
     </div>
   );
 }

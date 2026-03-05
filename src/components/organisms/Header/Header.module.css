@@ -1,0 +1,49 @@
+/* 
+   Mobile
+*/
+
+.header {
+  padding-bottom: 16px; 
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px; 
+}
+
+
+/* 
+   TABLET (≥768px)
+*/
+
+@media (min-width: 768px) {
+  .header {
+    padding-bottom: 20px;
+  }
+
+  .content {
+    gap: 20px; 
+    margin-top: 32px;
+  }
+}
+
+
+/* 
+   DESKTOP (≥1024px)
+*/
+
+@media (min-width: 1024px) {
+  .content {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 32px;
+    align-items: start;
+  }
+}

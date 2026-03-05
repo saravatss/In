@@ -1,0 +1,44 @@
+.section {
+  padding: 120px 0;
+}
+
+.container {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 100px;
+}
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .container {
+    padding: 0 40px;
+  }
+
+  .list {
+    gap: 80px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .section {
+    padding: 80px 0;
+  }
+
+  .container {
+    padding: 0 20px;
+    gap: 60px;
+  }
+}
+
+.titleIn {
+    max-width: 700px;
+    margin: 0px auto;
+}
