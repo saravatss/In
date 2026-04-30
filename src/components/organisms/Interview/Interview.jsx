@@ -14,6 +14,7 @@ export default function Interview({ interviews, showTitle = true }) {
           {interviews.map((item, index) => (
             <InterviewCard
               key={item.id}
+              id={item.id}
               title={item.title}
               description={item.description}
               image={item.image}

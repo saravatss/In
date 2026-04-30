@@ -9,6 +9,12 @@
   flex-direction: row-reverse;
 }
 
+.cardLink {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
 .content {
   flex: 1;
   display: flex;

@@ -8,6 +8,7 @@ import { Footer } from "@/components/organisms/Footer/Footer";
 import Interview from "@/components/organisms/Interview/Interview";
 import { interviewData } from "@/data/interviews";
 
+
 export default function Interviews() {
   const [filters, setFilters] = useState({
     search: "",
