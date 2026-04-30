@@ -1,14 +1,15 @@
 import styles from "./Interview.module.css";
 import InterviewCard from "@/components/molecules/InterviewCard/InterviewCard";
 
-export default function Interview({ interviews }) {
+export default function Interview({ interviews, showTitle = true }) {
   return (
     <section className={styles.section}>
       <div className={styles.container}>
-        <h2 className={`${styles.titleIn} title-2`}>
-          Здесь умные люди делятся умными мыслями!
-        </h2>
-
+        {showTitle && (
+          <h2 className={`${styles.titleIn} title-2`}>
+            Здесь умные люди делятся умными мыслями!
+          </h2>
+        )}
         <div className={styles.list}>
           {interviews.map((item, index) => (
             <InterviewCard

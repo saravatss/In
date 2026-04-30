@@ -20,7 +20,7 @@ export default function Templates() {
             <Header
             title={
               <>
-                Мысли
+                Анализ
               </>
             }
             description="Здесь вы можете быстро и легко подвести итог и проанализировать встречу с клиентом."
