@@ -1,81 +1,296 @@
+/* Mobile (default) — Figma 780:10791 */
 .footer {
-  padding: 80px 0 0 0;
+  overflow: hidden;
 }
-
 
 .container {
   width: 100%;
-  max-width: 1360px;
-  margin: 0 auto;
-  padding: 0 24px;
-
   display: flex;
   flex-direction: column;
-  gap: 48px;
+  gap: 40px;
 }
 
-
-.top {
+.main {
   display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.meta {
+  order: 1;
+  display: flex;
+  flex-direction: row;
   justify-content: space-between;
   align-items: flex-start;
-  gap: 40px;
-  flex-wrap: wrap;
+  gap: 61px;
 }
 
-
-.title {
-  max-width: 700px;
+.copyright {
+  margin: 0;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.25;
+  color: var(--black-200);
 }
 
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 124px;
+}
+
+.navLink {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.25;
+  color: var(--black-200);
+  text-decoration: none;
+}
 
 .subscribe {
+  order: 2;
   display: flex;
+  flex-direction: column;
   gap: 16px;
-  flex-wrap: wrap;
-  align-items: center;
+  width: 100%;
 }
 
+.title {
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+}
 
-.bottom {
+.form {
   display: flex;
-  justify-content: space-between;
+  flex-wrap: nowrap;
+  align-items: stretch;
+  gap: 4px;
+  width: 100%;
+}
+
+.form .inputField {
+  flex: 1 1 0;
+  min-width: 0;
+  height: 38px;
+  padding: 0 12px;
+  border-radius: 28px;
+  background: #eaeaea;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  box-sizing: border-box;
+  border: none;
+}
+
+.form .submit {
+  flex: 1 1 0;
+  min-width: 0;
+  height: 38px;
+  border-radius: 32px;
+  padding: 0 16px;
+  font-size: 16px;
+  box-sizing: border-box;
+  display: inline-flex;
   align-items: center;
-  gap: 24px;
-  flex-wrap: wrap;
-  margin-top: 32px;
+  justify-content: center;
 }
 
-
-.icon {
-  width: 40px;
-  height: 40px;
+.brand {
+  position: relative;
+  width: 100%;
+  min-height: 70px;
+  overflow: hidden;
+  line-height: 0;
+  pointer-events: none;
+  user-select: none;
 }
 
+.brandLogo {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  min-width: 359px;
+  height: auto;
+  display: block;
+}
 
-@media (max-width: 1024px) {
-  .top {
-    flex-direction: column;
+/* Tablet — Figma 780:10814 */
+@media (min-width: 768px) {
+  .container {
+    gap: 32px;
+  }
+
+  .main {
+    gap: 32px;
+  }
+
+  .meta {
+    order: 2;
+    justify-content: space-between;
+    gap: 32px;
+  }
+
+  .copyright,
+  .navLink {
+    font-family: Manrope, sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: -0.02em;
+  }
+
+  .nav {
+    gap: 8px;
+  }
+
+  .subscribe {
+    order: 1;
+    flex-direction: row;
     align-items: flex-start;
+    gap: 32px;
+    max-width: none;
   }
 
   .title {
-    max-width: 100%;
+    font-size: 24px;
+    flex-shrink: 0;
+  }
+
+  .form {
+    flex: 1;
+    justify-content: flex-end;
+    gap: 4px;
+  }
+
+  .form .inputField,
+  .form .submit {
+    flex: 1 1 0;
+    height: 49px;
+    box-sizing: border-box;
+  }
+
+  .form .inputField {
+    padding: 0 20px;
+    font-size: 16px;
+  }
+
+  .form .submit {
+    padding: 0 24px;
+    font-size: 18px;
+  }
+
+  .brand {
+    height: 169px;
+  }
+
+  .brandLogo {
+    top: -13px;
+    width: 786px;
+    max-width: none;
   }
 }
 
-@media (max-width: 600px) {
-  .subscribe {
-    width: 100%;
+/* Desktop — Figma 780:10975 */
+@media (min-width: 1280px) {
+  .container {
+    gap: 61px;
   }
 
-  .subscribe > * {
-    width: 100%;
-  }
-
-  .bottom {
-    flex-direction: column;
+  .main {
+    flex-direction: row;
+    justify-content: space-between;
     align-items: flex-start;
-    margin-top: 20px;
+    gap: clamp(32px, 8vw, 204px);
+  }
+
+  .meta {
+    order: unset;
+    flex: 1 1 auto;
+    min-width: 0;
+    max-width: 582px;
+    margin-left: auto;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 32px;
+  }
+
+  .copyright {
+    flex-shrink: 0;
+  }
+
+  .nav {
+    flex-shrink: 0;
+  }
+
+  .copyright {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: var(--fs-text-main);
+    font-weight: 400;
+    line-height: 1.4;
+    letter-spacing: 0;
+  }
+
+  .navLink {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: var(--fs-text-main);
+    font-weight: 400;
+    line-height: 1.4;
+    letter-spacing: 0;
+  }
+
+  .subscribe {
+    order: unset;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 486px;
+    flex-shrink: 0;
+  }
+
+  .title {
+    font-size: var(--fs-title-4);
+    font-weight: 700;
+    letter-spacing: -0.04em;
+  }
+
+  .form {
+    justify-content: flex-start;
+    gap: 8px;
+  }
+
+  .form .inputField,
+  .form .submit {
+    flex: 1 1 0;
+    height: 49px;
+    box-sizing: border-box;
+  }
+
+  .form .inputField {
+    padding: 0 24px;
+    font-size: var(--fs-text-nav);
+  }
+
+  .form .submit {
+    padding: 0 24px;
+    font-size: 18px;
+  }
+
+  .brand {
+    height: auto;
+    overflow: visible;
+  }
+
+  .brandLogo {
+    position: static;
+    width: 100%;
+    min-width: 0;
+    top: auto;
   }
 }

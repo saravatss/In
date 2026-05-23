@@ -1,40 +1,65 @@
 "use client";
 
-import { useState } from "react";
-import { useParams } from "next/navigation";
+import { Suspense, useEffect, useMemo, useState } from "react";
+import { useParams, useSearchParams } from "next/navigation";
 import styles from "./page.module.css";
-import { Header } from "@/components/organisms/Header/Header";
+import { TemplateHeader } from "@/components/organisms/TemplateHeader/TemplateHeader";
 import { Footer } from "@/components/organisms/Footer/Footer";
 import { TemplateLayout } from "@/components/organisms/TemplateLayout/TemplateLayout";
 import { getTemplateByType } from "@/data/templates";
 
-export default function TemplatePage() {
+function createEmptyFormData(sections) {
+  return Object.fromEntries(sections.map((section) => [section.id, ""]));
+}
+
+function TemplatePageContent() {
   const { type } = useParams();
+  const searchParams = useSearchParams();
+  const initialStepId = searchParams.get("step");
   const template = getTemplateByType(type);
 
-  const [formData, setFormData] = useState({});
+  const initialFormData = useMemo(
+    () => createEmptyFormData(template.sections),
+    [template]
+  );
+
+  const [formData, setFormData] = useState(initialFormData);
+
+  useEffect(() => {
+    setFormData(createEmptyFormData(template.sections));
+  }, [type, template.sections]);
 
   const handleChange = (id, value) => {
     setFormData((prev) => ({
       ...prev,
-      [id]: value,
+      [id]: value ?? "",
     }));
   };
 
   return (
-    <>
-      <Header
-        title={template.title}
+    <div className={styles.page}>
+      <TemplateHeader
+        displayName={template.displayName}
         description={template.description}
       />
 
       <TemplateLayout
+        displayName={template.displayName}
         sections={template.sections}
         formData={formData}
         onChange={handleChange}
+        initialStepId={initialStepId}
       />
 
       <Footer />
-    </>
+    </div>
+  );
+}
+
+export default function TemplatePage() {
+  return (
+    <Suspense fallback={null}>
+      <TemplatePageContent />
+    </Suspense>
   );
 }

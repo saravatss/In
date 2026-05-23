@@ -1,53 +1,224 @@
-.card {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 135px;
-}
-
-.reverse {
-  flex-direction: row-reverse;
-}
-
 .cardLink {
+  display: block;
+  width: 100%;
+  max-width: 1170px;
   text-decoration: none;
   color: inherit;
-  display: block;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 24px;
+  width: 100%;
+  padding: 20px 24px;
+  border-radius: 32px;
+  background: rgba(205, 228, 203, 0.3);
 }
 
 .content {
-  flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  gap: 12px;
+  min-width: 0;
+}
+
+.textBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
   align-items: flex-start;
 }
 
-.imageWrapper {
-  flex: 1;
+.cardTitle {
+  margin: 0;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
 }
 
-.imageWrapper img {
+.description {
+  margin: 0;
+}
+
+.readButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 16px;
+  border-radius: 32px;
+  background: var(--green-400);
+  color: var(--black-200);
+  font-family: Manrope, sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: normal;
+  transition: background-color 0.2s ease, color 0.2s ease, padding 0.2s ease;
+}
+
+/* Portrait */
+.portrait {
+  position: relative;
+  flex-shrink: 0;
   width: 100%;
-  height: auto;
+  height: 236px;
+  overflow: hidden;
+}
+
+.circleOuter,
+.circleInner {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.circleOuter {
+  top: 3.5px;
+  width: 263px;
+  height: 264px;
+  background: rgba(205, 228, 203, 0.55);
+}
+
+.circleInner {
+  top: 36.5px;
+  width: 231px;
+  height: 231px;
+  background: var(--green-400);
+}
+
+.photo {
+  position: absolute;
+  left: calc(50% + 9px);
+  top: -0.5px;
+  width: 238px;
+  height: 239px;
+  transform: translateX(-50%);
   object-fit: cover;
+  pointer-events: none;
 }
 
-/* Tablet */
-@media (max-width: 1024px) {
+/* Tablet — Figma 591:6047 */
+@media (min-width: 768px) {
   .card {
-    gap: 40px;
+    flex-direction: row;
+    align-items: center;
+    gap: 56px;
+    max-width: 786px;
+    padding: 32px 40px 32px 29px;
+    border-radius: 40px;
   }
-}
 
-/* Mobile */
-@media (max-width: 768px) {
-  .card,
   .reverse {
-    flex-direction: column;
+    flex-direction: row-reverse;
   }
 
   .content {
+    flex: 1;
+    gap: 16px;
+    justify-content: center;
+    padding-block: 32px;
+  }
+
+  .textBlock {
+    gap: 20px;
+    width: 100%;
+  }
+
+  .description {
+    line-height: 1.3;
+  }
+
+  .portrait {
+    width: 218px;
+    height: 208px;
+  }
+
+  .circleOuter {
+    top: 21px;
+    width: 209px;
+    height: 209px;
+  }
+
+  .circleInner {
+    top: 47px;
+    width: 183px;
+    height: 183px;
+  }
+
+  .photo {
+    left: calc(50% + 7.5px);
+    top: 18px;
+    width: 189px;
+    height: 189px;
+  }
+}
+
+/* Desktop — Figma 860:10279, 279:2518 */
+@media (min-width: 1280px) {
+  .cardLink:hover .readButton {
+    background: var(--black-200);
+    color: var(--white);
+    padding: 12px 24px;
+  }
+
+  .card {
+    gap: 51px;
+    max-width: 1170px;
+    padding: 0 84px;
+    border-radius: 40px;
+  }
+
+  .content {
+    flex: 1;
+    gap: 20px;
+    padding-block: 32px;
+  }
+
+  .textBlock {
     gap: 24px;
+    max-width: 596px;
+  }
+
+  .cardTitle {
+    line-height: 1.1;
+    letter-spacing: -0.04em;
+  }
+
+  .description {
+    line-height: 1.4;
+  }
+
+  .readButton {
+    padding: 12px 24px;
+    font-size: 18px;
+  }
+
+  .portrait {
+    width: 355px;
+    height: 300px;
+  }
+
+  .circleOuter {
+    top: 12px;
+    left: calc(50% - 10.5px);
+    width: 345px;
+    height: 345px;
+  }
+
+  .circleInner {
+    top: 56px;
+    left: calc(50% - 10.5px);
+    width: 301px;
+    height: 301px;
+  }
+
+  .photo {
+    left: calc(50% - 10px);
+    top: 24px;
+    width: 288px;
+    height: 288px;
   }
 }

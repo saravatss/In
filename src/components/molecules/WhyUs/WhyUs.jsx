@@ -2,37 +2,41 @@ import styles from "./WhyUs.module.css";
 import { FeatureCard } from "./FeatureCard";
 import Image from "next/image";
 
+const WIDGET_BG_WARM = "/images/whyUsWidgetBgB.png";
+const WIDGET_BG_COOL = "/images/whyUsWidgetBgA.png";
+
+const ROUTE_NEW_NOTE = "/templates/gestalt";
+const ROUTE_SUPERVISOR = "/templates/gestalt?step=supervisor";
+
 export function WhyUs() {
   return (
     <section className={styles.section}>
       <div className={styles.titleBlock}>
-        <h2 className={`${styles.titleBlock} title-2`}>
-          Почему именно наш сервис?
+        <h2 className={`${styles.title} title-2`}>
+          <span className={styles.titleLine}>Попробуй наши</span>
+          <span className={styles.titleLine}>инструменты</span>
         </h2>
         <Image
-        className={styles.arrow}
-        src="/images/arrowRight.svg"
-        alt="arrow"
-        width={31}
-        height={32}
+          className={styles.arrow}
+          src="/images/arrowRight.svg"
+          alt=""
+          width={31}
+          height={32}
         />
       </div>
 
       <div className={styles.grid}>
-        <FeatureCard>
-          Существенно сокращает время анализа
+        <FeatureCard bg={WIDGET_BG_WARM} bgVariant="bgNewNote" href={ROUTE_NEW_NOTE}>
+          Новая заметка
         </FeatureCard>
-
-        <FeatureCard>
-          Легкая организация
+        <FeatureCard bg={WIDGET_BG_COOL} bgVariant="bgPickTemplate" href="/templates">
+          Выбрать шаблон
         </FeatureCard>
-
-        <FeatureCard>
-          Ни одной мысли не ускользнет от вас
+        <FeatureCard bg={WIDGET_BG_COOL} bgVariant="bgOverview" href="/templates/overview">
+          Обзор шаблонов
         </FeatureCard>
-
-        <FeatureCard>
-          Структурирование заметок после сессии становится приятным
+        <FeatureCard bg={WIDGET_BG_WARM} bgVariant="bgSupervisor" href={ROUTE_SUPERVISOR}>
+          К супервизору
         </FeatureCard>
       </div>
     </section>

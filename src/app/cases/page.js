@@ -1,6 +1,6 @@
 "use client";
 
-import styles from "./page.module.css";
+import listingStyles from "@/styles/listingPage.module.css";
 import { useState, useMemo } from "react";
 import { Header } from "@/components/organisms/Header/Header";
 import { casesData } from "@/data/cases";
@@ -8,35 +8,31 @@ import { CaseGrid } from "@/components/organisms/CaseGrid/CaseGrid";
 import { Footer } from "@/components/organisms/Footer/Footer";
 import { Filters } from "@/components/organisms/Filters/Filters";
 
-
 export default function CasesPage() {
-
-   const [filters, setFilters] = useState({
+  const [filters, setFilters] = useState({
     search: "",
     approach: "",
     type: "",
     age: "",
     gender: "",
     format: "",
-    sort: ""
+    sort: "",
   });
 
   const filteredCases = useMemo(() => {
     let result = [...casesData];
 
-    
-      if (filters.search) {
-        result = result.filter(item =>
-          item.title.toLowerCase().includes(filters.search.toLowerCase())
-        );
-      }
+    if (filters.search) {
+      result = result.filter((item) =>
+        item.title.toLowerCase().includes(filters.search.toLowerCase())
+      );
+    }
 
     Object.entries(filters).forEach(([key, value]) => {
       if (value && key !== "sort" && key !== "search") {
-        result = result.filter(item => item[key] === value);
+        result = result.filter((item) => item[key] === value);
       }
     });
-
 
     if (filters.sort === "new") {
       result.sort((a, b) => new Date(b.date) - new Date(a.date));
@@ -49,33 +45,33 @@ export default function CasesPage() {
     return result;
   }, [filters]);
 
-
   return (
-    <div>
-      <Header
-      title="Статьи с кейсами"
-      description="Собранные совместно с экспертами случаи из практики, с которыми могут возникнуть трудности."
-    />
-    <Filters filters={filters} setFilters={setFilters} />
-    
-    {filteredCases.length > 0 ? (
-      <CaseGrid cases={filteredCases} />
-    ) : (
-      <>
-        <div className={styles.emptyWrapper}>
-          <h4 className="title-4">
-            Кажется, по этим фильтрам ничего нет...
-            <br />
-            Поменяйте фильтры или посмотрите кейсы ниже!
-          </h4>
-        </div>
+    <div className={listingStyles.page}>
+      <div className={listingStyles.listing}>
+        <Header
+          title="Статьи с кейсами"
+          description="Собранные совместно с экспертами случаи из практики, с которыми могут возникнуть трудности."
+        />
+        <Filters filters={filters} setFilters={setFilters} />
 
-        <CaseGrid cases={casesData.slice(0, 3)} />
-      </>
-    )}
+        {filteredCases.length > 0 ? (
+          <CaseGrid cases={filteredCases} />
+        ) : (
+          <>
+            <div className={listingStyles.emptyWrapper}>
+              <h4 className="title-4">
+                Кажется, по этим фильтрам ничего нет...
+                <br />
+                Поменяйте фильтры или посмотрите кейсы ниже!
+              </h4>
+            </div>
 
+            <CaseGrid cases={casesData.slice(0, 3)} />
+          </>
+        )}
+      </div>
 
-    <Footer />
+      <Footer />
     </div>
   );
 }

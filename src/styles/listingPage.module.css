@@ -1,0 +1,31 @@
+.page {
+  display: flex;
+  flex-direction: column;
+}
+
+.listing {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  margin-bottom: 128px;
+}
+
+.listing header {
+  padding-bottom: 0;
+}
+
+.emptyWrapper {
+  max-width: 900px;
+}
+
+@media (max-width: 767px) {
+  .listing {
+    margin-bottom: 64px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1279px) {
+  .listing {
+    margin-bottom: 80px;
+  }
+}

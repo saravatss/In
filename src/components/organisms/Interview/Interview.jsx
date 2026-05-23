@@ -1,7 +1,7 @@
 import styles from "./Interview.module.css";
 import InterviewCard from "@/components/molecules/InterviewCard/InterviewCard";
 
-export default function Interview({ interviews, showTitle = true }) {
+export default function Interview({ interviews, showTitle = true, flushBottom = false }) {
   return (
     <section className={styles.section}>
       <div className={styles.container}>
@@ -10,7 +10,7 @@ export default function Interview({ interviews, showTitle = true }) {
             Здесь умные люди делятся умными мыслями!
           </h2>
         )}
-        <div className={styles.list}>
+        <div className={`${styles.list} ${flushBottom ? styles.listFlush : ""}`}>
           {interviews.map((item, index) => (
             <InterviewCard
               key={item.id}

@@ -1,0 +1,248 @@
+.modalRoot {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: rgba(43, 42, 47, 0.8);
+}
+
+.modal {
+  width: min(100%, 489px);
+  padding: 32px;
+  border-radius: 28px;
+  background: var(--white);
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.modalHeader {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.alertIcon {
+  position: relative;
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+}
+
+.alertCircle {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.alertExclamation {
+  position: absolute;
+  left: 50%;
+  top: 22%;
+  width: 4px;
+  height: 18px;
+  transform: translateX(-50%);
+}
+
+.alertDot {
+  position: absolute;
+  left: 50%;
+  bottom: 8px;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--black-200);
+  transform: translateX(-50%);
+}
+
+.modalText {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding-top: 6px;
+}
+
+.modalTitle {
+  margin: 0;
+  font-family: Manrope, sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  color: var(--black-200);
+}
+
+.modalDescription {
+  margin: 0;
+  font-family: Manrope, sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--black-100);
+}
+
+.modalActions {
+  display: flex;
+  gap: 8px;
+}
+
+.cancelBtn,
+.confirmBtn {
+  flex: 1;
+  border-radius: 32px;
+  padding: 12px 24px;
+  font-family: Manrope, sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+  border: none;
+}
+
+.cancelBtn {
+  background: transparent;
+  border: 2px solid rgba(43, 42, 47, 0.8);
+  color: var(--black-100);
+}
+
+.confirmBtn {
+  background: var(--purple-400);
+  color: var(--black-200);
+}
+
+.toast {
+  position: fixed;
+  top: 120px;
+  right: 40px;
+  z-index: 900;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  max-width: min(420px, calc(100vw - 48px));
+  padding: 24px 32px;
+  border: 2px solid rgba(43, 42, 47, 0.2);
+  border-radius: 12px;
+  background: #fffffe;
+  box-shadow: 0 4px 5.1px rgba(68, 68, 68, 0.1);
+}
+
+.checkIcon {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 23px;
+  background: var(--green-400);
+  color: var(--black-200);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.toastText {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+  min-width: 0;
+}
+
+.toastTitle {
+  margin: 0;
+  font-family: Manrope, sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  color: var(--black-200);
+}
+
+.toastSubtitle {
+  margin: 0;
+  font-family: Manrope, sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--black-200);
+}
+
+.toastError {
+  border-color: rgba(180, 60, 60, 0.35);
+}
+
+.toastClose {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: var(--black-200);
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+@media (max-width: 767px) {
+  .modal {
+    padding: 20px;
+    border-radius: 20px;
+    gap: 20px;
+  }
+
+  .alertIcon {
+    width: 30px;
+    height: 30px;
+  }
+
+  .alertExclamation {
+    height: 14px;
+  }
+
+  .modalTitle {
+    font-size: 18px;
+  }
+
+  .modalDescription {
+    font-size: 14px;
+  }
+
+  .cancelBtn,
+  .confirmBtn {
+    padding: 8px 16px;
+    font-size: 16px;
+  }
+
+  .toast {
+    top: auto;
+    right: 16px;
+    left: 16px;
+    bottom: 96px;
+    max-width: none;
+    padding: 16px 20px;
+  }
+
+  .checkIcon {
+    width: 32px;
+    height: 32px;
+  }
+
+  .toastTitle {
+    font-size: 18px;
+  }
+
+  .toastSubtitle {
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1279px) {
+  .toast {
+    right: 24px;
+    top: 100px;
+  }
+}

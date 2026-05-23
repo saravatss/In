@@ -1,44 +1,103 @@
+.section {
+
+  width: 100%;
+
+}
+
 
 
 .container {
-  margin: 0 auto;
+
   display: flex;
+
   flex-direction: column;
-  gap: 80px;
+
+  gap: 24px;
+
+  width: 100%;
+
 }
+
+
+
+.titleIn {
+
+  font-weight: 700;
+
+  line-height: 1.08;
+
+  max-width: 324px;
+
+}
+
+
 
 .list {
   display: flex;
   flex-direction: column;
-  gap: 100px;
+  align-items: center;
+  gap: 32px;
+  width: 100%;
+  margin-bottom: 128px;
 }
 
-/* Tablet */
-@media (max-width: 1024px) {
+.listFlush {
+  margin-bottom: 0;
+}
+
+
+
+/* Tablet — Figma 591:6047 */
+
+@media (min-width: 768px) {
+
   .container {
-    padding: 0 40px;
+
+    gap: 56px;
+
+    align-items: center;
+
   }
 
-  .list {
+
+
+  .titleIn {
+
+    max-width: 490px;
+
+    text-align: center;
+
+    line-height: 1.03;
+
+    font-size: 36px;
+
+  }
+
+}
+
+
+
+/* Desktop — Figma 279:2518, 423:4048 */
+
+@media (min-width: 1280px) {
+
+  .container {
+
     gap: 80px;
-  }
-}
 
-/* Mobile */
-@media (max-width: 768px) {
-  .section {
-    padding: 80px 0;
   }
 
-  .container {
-    padding: 0 20px;
-    gap: 60px;
-  }
-}
 
-.titleIn {
+
+  .titleIn {
+
     max-width: 700px;
-    margin: 0px auto;
-    margin-top: 80px;
-    margin-bottom: 85px;
+
+    line-height: 1.1;
+
+    font-size: var(--fs-title-2);
+
+  }
+
 }
+

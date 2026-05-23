@@ -1,74 +1,225 @@
-.textCard {
-    font-weight: 600;
-}
-
-.titleBlock {
-    font-size: 56px;
-    font-weight: 700;
-}
-
 .section {
-  margin-top: 150px;
+  width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 48px;
-}
-
-/* DESKTOP */
-@media (min-width: 1024px) {
-  .section {
-    flex-direction: row;
-    align-items: flex-start;
-    justify-content: space-between;
-  }
+  gap: 16px;
+  min-width: 0;
 }
 
 .titleBlock {
-  max-width: 527px;
   display: flex;
-  align-items:flex-start;
-  gap: 12px;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  width: fit-content;
+  max-width: 100%;
+  min-width: 0;
+  align-self: center;
+}
 
+.title {
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 auto;
+  width: max-content;
+  max-width: 100%;
+  text-align: center;
+  font-weight: 700;
+  line-height: 1.08;
+}
+
+.titleLine {
+  display: block;
+}
+
+.arrow {
+  width: 20px;
+  height: 20px;
+  transform: rotate(90deg);
 }
 
 .grid {
   display: grid;
-  gap: 0px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  width: 100%;
+  min-width: 0;
 }
 
-/* tablet */
-@media (min-width: 768px) {
-  .grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-/* desktop */
-@media (min-width: 1024px) {
-  .grid {
-    width: 670px;
-  }
+.cardLink {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
 }
 
 .card {
-  background: var(--green-400);
-  border-radius: 32px;
-  padding: 24px 32px 24px 32px;
   position: relative;
-  min-height: 179px;
-  max-height: 203px;
   display: flex;
-  align-items: flex-start;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100px;
+  padding: 16px;
+  border-radius: 12px;
+  background-repeat: no-repeat;
+  overflow: hidden;
 }
 
+.card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: transparent;
+  pointer-events: none;
+  transition: background 0.15s ease;
+  z-index: 1;
+}
+
+.card:hover::after {
+  background: rgba(43, 42, 47, 0.1);
+}
+
+/* Figma M_Widget — 279:2491 */
+.bgNewNote {
+  background-size: 206% 191%;
+  background-position: 13% 28%;
+}
+
+/* 479:2305 — imgMWidget: w 145.85%, h 135.39%, left -45.9%, top -17.59% */
+.bgPickTemplate {
+  background-size: 146% 135%;
+  background-position: 100% 50%;
+}
+
+/* 479:2311 — тот же imgMWidget, кадр в жёлто-оранжевую зону (верхний левый угол) */
+.bgOverview {
+  background-size: 200% 185%;
+  background-position: 0% 0%;
+}
+
+.bgSupervisor {
+  background-size: 200% 185%;
+  background-position: 75% 65%;
+}
+
+.textCard {
+  position: relative;
+  z-index: 2;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 1.15;
+}
 
 .dot {
   position: absolute;
-  bottom: 24px;
-  left: 24px;
+  z-index: 2;
+  bottom: 16px;
+  left: 16px;
+  width: 28px;
+  height: 28px;
 }
 
-.arrow {
-  margin-left: 8px;
-  margin-top: 16px;
+@media (min-width: 768px) {
+  .section {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: clamp(24px, 5vw, 48px);
+  }
+
+  .titleBlock {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 4px;
+    flex: 0 0 auto;
+    width: fit-content;
+    max-width: 287px;
+    align-self: flex-start;
+  }
+
+  .title {
+    text-align: left;
+    line-height: 1.03;
+    max-width: 287px;
+    white-space: normal;
+  }
+
+  .arrow {
+    width: 20px;
+    height: 20px;
+    margin-top: 13px;
+    transform: none;
+    flex-shrink: 0;
+  }
+
+  .grid {
+    flex: 1 1 auto;
+    min-width: 0;
+    max-width: none;
+    width: auto;
+    margin-left: 0;
+  }
+
+  .card {
+    min-height: 109px;
+    border-radius: 20px;
+    padding: 16px;
+  }
+
+  .textCard {
+    font-size: 16px;
+    line-height: 1.1;
+  }
+}
+
+@media (min-width: 1280px) {
+  .section {
+    gap: clamp(32px, 4vw, 64px);
+    justify-content: space-between;
+  }
+
+  .titleBlock {
+    flex: 0 0 auto;
+    width: fit-content;
+    max-width: none;
+    gap: 16px;
+    align-self: flex-start;
+  }
+
+  .title {
+    max-width: none;
+    white-space: nowrap;
+  }
+
+  .arrow {
+    width: 31px;
+    height: 32px;
+    margin-top: 16px;
+    flex-shrink: 0;
+  }
+
+  .grid {
+    flex: 0 1 678px;
+    max-width: 678px;
+    width: 100%;
+    gap: 8px;
+  }
+
+  .card {
+    min-height: 164px;
+    max-height: 165px;
+    border-radius: 20px;
+    padding: 24px 32px;
+  }
+
+  .textCard {
+    font-size: 24px;
+    line-height: 1.11;
+  }
+
+  .dot {
+    bottom: 24px;
+    left: 24px;
+    width: 48px;
+    height: 48px;
+  }
 }

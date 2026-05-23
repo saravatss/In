@@ -5,46 +5,70 @@ import styles from "./Footer.module.css";
 
 import { Button } from "@/components/atoms/Buttons/Button";
 import { Input } from "@/components/atoms/Input/Input";
+import { NavLink } from "@/components/atoms/Header/NavLink";
+
+const FOOTER_LINKS = [
+  { href: "/templates", label: "Ваш анализ" },
+  { href: "/cases", label: "Кейсы" },
+  { href: "/interviews", label: "Интервью" },
+];
 
 export function Footer() {
   return (
     <footer className={styles.footer}>
-      <div className={styles.content}>
-        
-        
-        <div className={styles.top}>
-          <h2 className="title-2">
-            Чтобы не упустить обновления
-            <br />
-            и новые кейсы
-          </h2>
-
+      <div className={styles.container}>
+        <div className={styles.main}>
           <div className={styles.subscribe}>
-            <Input 
+            <h2 className={`${styles.title} title-4`}>
+              Чтобы не упустить обновления
+              <br />
+              и новые кейсы
+            </h2>
 
-              placeholder="Электронная почта"
-            />
-
-            <Button variant="primary" size="sm">
-              Подписаться
-            </Button>
+            <div className={styles.form}>
+              <Input
+                type="email"
+                placeholder="Электронная почта"
+                className={styles.inputField}
+              />
+              <Button
+                variant="muted"
+                size="md"
+                type="button"
+                className={styles.submit}
+              >
+                Отправить
+              </Button>
+            </div>
           </div>
 
+          <div className={styles.meta}>
+            <p className={styles.copyright}>
+              © 2026 Лайтин.
+              <br />
+              Все права защищены.
+            </p>
+
+            <nav className={styles.nav} aria-label="Навигация в подвале">
+              {FOOTER_LINKS.map(({ href, label }) => (
+                <NavLink key={href} href={href} className={styles.navLink}>
+                  {label}
+                </NavLink>
+              ))}
+            </nav>
+          </div>
         </div>
 
-        <div className={styles.bottom}>
-          <p className="navigation-text">
-            © 2025 Лайтин. Все права защищены.
-          </p>
-
+        <div className={styles.brand} aria-hidden="true">
           <Image
-            src="/images/logo.svg"
-            alt="In"
-            width={46}
-            height={48}
+            className={styles.brandLogo}
+            src="/images/logo_2.svg"
+            alt=""
+            width={1360}
+            height={482}
+            priority={false}
           />
         </div>
-
       </div>
     </footer>
   );

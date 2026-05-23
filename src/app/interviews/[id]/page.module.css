@@ -4,6 +4,17 @@
   align-items: center;
 }
 
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 128px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
 /* ================= DESKTOP ================= */
 
 .headerBlock {
@@ -171,6 +182,9 @@
 /* ================= MOBILE ================= */
 
 @media (max-width: 768px) {
+  .page {
+    gap: 64px;
+  }
 
   .title {
     font-size: 28px;

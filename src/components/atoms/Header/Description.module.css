@@ -1,6 +1,21 @@
 .headerText {
-  font-size: 20px;
-  max-width: 326px;
-  line-height: 1.3;
   font-weight: 600;
+  line-height: 1.15;
+  max-width: 227px;
+  font-size: 12px;
+}
+
+@media (min-width: 768px) {
+  .headerText {
+    max-width: 251px;
+    font-size: 16px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .headerText {
+    max-width: 350px;
+    font-size: 20px;
+    line-height: 1.15;
+  }
 }

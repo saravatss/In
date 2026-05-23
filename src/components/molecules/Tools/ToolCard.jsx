@@ -1,12 +1,9 @@
 import styles from "./ToolCard.module.css";
 
-export function ToolCard({ children, bg }) {
+export function ToolCard({ children }) {
   return (
-    <div
-      className={styles.card}
-      style={{ backgroundImage: `url(${bg})` }}
-    >
-      <span className={`${styles.textTool} text-nav`}>{children}</span>
+    <div className={styles.card}>
+      <span className={styles.textTool}>{children}</span>
     </div>
   );
 }

@@ -1,5 +1,5 @@
 .input {
-  background: var(--green-100);
+  background: #EAEAEA;
   border: none;
   border-radius: 48px;
   font-family: Manrope;
@@ -18,7 +18,7 @@
 }
 
 .input:focus {
-  background: var(--green-100);
+  background: #D2D2D2;
 }
 
 .input::placeholder {

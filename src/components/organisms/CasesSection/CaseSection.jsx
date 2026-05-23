@@ -1,4 +1,4 @@
-import { Button } from "@/components/atoms/Buttons/Button";
+import { Button, BUTTON_ARROW_ICON } from "@/components/atoms/Buttons/Button";
 import styles from "./CaseSection.module.css";
 import { CaseGrid } from "@/components/organisms/CaseGrid/CaseGrid";
 
@@ -22,7 +22,7 @@ export function CasesSection({
           <Button
             variant="primary"
             size="lg"
-            icon="/images/arrowFullR.svg"
+            icon={BUTTON_ARROW_ICON}
           >
             Прочитать больше
           </Button>

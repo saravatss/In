@@ -1,28 +1,596 @@
 .wrapper {
   display: grid;
-  grid-template-columns: 1fr 450px;
-  gap: 120px;
-  padding-top: 32px;
+  grid-template-columns: minmax(320px, 366px) minmax(0, 1fr);
+  gap: 114px;
+  padding: 0 40px 40px 0;
+  align-items: start;
 }
 
-.left {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 64px;
-}
-
-.right {
-  max-width: 450px;
-  position: sticky;
-  top: 40px;
-  align-self: flex-start;
-  background: var(--purple-100);
-  padding: 32px 64px;
-  border-radius: 24px;
+.sidebar {
   display: flex;
   flex-direction: column;
   gap: 32px;
-   height: fit-content;
+  padding: 40px 40px 48px;
+  border-radius: 0 12px 12px 0;
+  background: var(--green-100);
 }
 
+.sidebarInner {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.stepCounter {
+  margin: 0;
+  font-family: Manrope, sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  color: var(--black-200);
+}
+
+.stepList {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.stepList::before {
+  content: "";
+  position: absolute;
+  left: 58px;
+  top: 61px;
+  bottom: 61px;
+  width: 0;
+  border-left: 2px dashed rgba(43, 42, 47, 0.2);
+}
+
+.stepItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  max-width: 286px;
+  min-height: 61px;
+  padding: 0 12px 0 38px;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  cursor: pointer;
+  text-align: left;
+  transition: background-color 0.15s ease;
+}
+
+.stepItem:hover:not(.stepItemActive),
+.stepItem:focus-visible:not(.stepItemActive) {
+  background: rgba(205, 228, 203, 0.3);
+}
+
+.stepItemActive {
+  background: var(--green-400);
+}
+
+.stepNumber {
+  position: relative;
+  z-index: 1;
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--green-400);
+  color: var(--black-100);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: Manrope, sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.stepItem:hover:not(.stepItemActive) .stepNumber,
+.stepItem:focus-visible:not(.stepItemActive) .stepNumber {
+  background: #aec2ac;
+}
+
+.stepNumberActive {
+  background: var(--black-200);
+  color: var(--green-400);
+}
+
+.stepTitle {
+  font-family: Manrope, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.13;
+  letter-spacing: -0.02em;
+  color: var(--black-100);
+}
+
+.stepItemActive .stepTitle {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--black-200);
+}
+
+.sidebarExport {
+  width: 100%;
+  opacity: 0.6;
+  color: var(--black-100);
+  border-color: var(--black-100);
+  white-space: nowrap;
+  font-size: 16px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.mobileBar,
+.mobileBottomBar {
+  display: none;
+}
+
+.formPanel {
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+  min-width: 0;
+  max-width: 920px;
+}
+
+.formTopRow {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.formHeaderLeft {
+  display: flex;
+  gap: 22px;
+  align-items: flex-start;
+  min-width: 0;
+}
+
+.stepBadge {
+  flex-shrink: 0;
+  width: 92px;
+  height: 92px;
+  border-radius: 59px;
+  background: var(--green-100);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: Manrope, sans-serif;
+  font-size: 40px;
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  color: var(--black-100);
+}
+
+.formTitles {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-top: 8px;
+  max-width: 314px;
+}
+
+.formTitle {
+  margin: 0;
+  font-family: Manrope, sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.04em;
+  color: var(--black-200);
+}
+
+.formSubtitle {
+  margin: 0;
+  font-family: Manrope, sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--black-200);
+  opacity: 0.6;
+}
+
+.metaFields {
+  display: flex;
+  gap: 8px;
+  align-items: flex-end;
+  flex-shrink: 0;
+}
+
+.metaField {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.metaLabel {
+  font-family: Manrope, sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--black-200);
+}
+
+.metaInput,
+.datePicker {
+  width: 238px;
+  padding: 8px 16px;
+  border: 1px solid rgba(43, 42, 47, 0.3);
+  border-radius: 8px;
+  background: #fffffe;
+  font-family: Manrope, sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.15;
+  color: var(--black-200);
+  outline: none;
+  box-sizing: border-box;
+}
+
+.metaInput::placeholder {
+  color: rgba(43, 42, 47, 0.5);
+}
+
+.datePicker {
+  width: auto;
+  min-width: 180px;
+  color-scheme: light;
+}
+
+.datePicker::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+.formBody {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.textareaWrap {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 319px;
+  padding: 32px;
+  border: 1.5px solid rgba(43, 42, 47, 0.3);
+  border-radius: 12px;
+  background: #fff;
+  opacity: 0.85;
+  box-sizing: border-box;
+}
+
+.textarea {
+  width: 100%;
+  min-height: 220px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  resize: vertical;
+  font-family: Manrope, sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--black-200);
+  outline: none;
+}
+
+.textarea::placeholder {
+  color: rgba(43, 42, 47, 0.5);
+}
+
+.charCounter {
+  align-self: flex-end;
+  font-family: Manrope, sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--black-200);
+  opacity: 0.5;
+}
+
+.examples {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 32px;
+  border-radius: 12px;
+  background: var(--green-100);
+}
+
+.examplesLabel {
+  margin: 0;
+  font-family: Manrope, sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  color: var(--black-200);
+}
+
+.exampleChips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.exampleChip {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 32px;
+  background: rgba(205, 228, 203, 0.55);
+  font-family: Manrope, sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: rgba(43, 42, 47, 0.5);
+  cursor: pointer;
+  text-align: left;
+}
+
+.sendSection {
+  display: flex;
+  gap: 32px;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+
+.telegramField {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.telegramLabel {
+  font-family: Manrope, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  color: var(--black-200);
+}
+
+.telegramInput {
+  width: 198px;
+  padding: 8px 16px;
+  border: 1px solid rgba(43, 42, 47, 0.3);
+  border-radius: 8px;
+  background: #fffffe;
+  font-family: Manrope, sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.15;
+  color: var(--black-200);
+  outline: none;
+  box-sizing: border-box;
+}
+
+.telegramInput::placeholder {
+  color: rgba(43, 42, 47, 0.5);
+}
+
+.sendButton {
+  min-width: 287px;
+  flex-shrink: 0;
+}
+
+@media (max-width: 767px) {
+  .wrapper {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding: 0 0 88px;
+  }
+
+  .sidebar {
+    display: none;
+  }
+
+  .mobileBar {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 16px;
+    border-radius: 20px;
+    background: var(--green-100);
+  }
+
+  .mobileTop {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .mobileStepCounter {
+    margin: 0;
+    font-family: Manrope, sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--black-200);
+  }
+
+  .mobileExport {
+    width: 40px;
+    height: 40px;
+    border: 2px solid rgba(43, 42, 47, 0.6);
+    border-radius: 50%;
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+
+  .mobileExport img {
+    width: 16px;
+    height: 16px;
+  }
+
+  .mobileSteps {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    padding-bottom: 4px;
+  }
+
+  .mobileStepPill {
+    flex-shrink: 0;
+    width: 36px;
+    height: 36px;
+    border: none;
+    border-radius: 50%;
+    background: transparent;
+    font-family: Manrope, sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--black-200);
+    cursor: pointer;
+    transition: background-color 0.15s ease;
+  }
+
+  .mobileStepPill:hover:not(.mobileStepPillActive),
+  .mobileStepPill:focus-visible:not(.mobileStepPillActive) {
+    background: #aec2ac;
+  }
+
+  .mobileStepPillActive {
+    background: var(--green-400);
+  }
+
+  .formPanel {
+    gap: 24px;
+    max-width: none;
+  }
+
+  .formTopRow {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .formHeaderLeft {
+    gap: 16px;
+  }
+
+  .stepBadge {
+    width: 56px;
+    height: 56px;
+    font-size: 24px;
+  }
+
+  .formTitle {
+    font-size: var(--fs-title-4);
+  }
+
+  .formSubtitle {
+    font-size: 14px;
+  }
+
+  .metaFields {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .metaInput,
+  .datePicker {
+    width: 100%;
+  }
+
+  .textareaWrap {
+    min-height: 180px;
+    padding: 16px 20px;
+  }
+
+  .textarea {
+    min-height: 120px;
+    font-size: 16px;
+  }
+
+  .charCounter {
+    font-size: 14px;
+  }
+
+  .examples {
+    padding: 20px;
+    gap: 16px;
+  }
+
+  .examplesLabel {
+    font-size: 18px;
+  }
+
+  .exampleChip {
+    font-size: 14px;
+  }
+
+  .sendSection {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+  }
+
+  .telegramInput {
+    width: 100%;
+  }
+
+  .sendButton {
+    display: none;
+  }
+
+  .mobileBottomBar {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 50;
+    display: flex;
+    gap: 8px;
+    padding: 12px 16px;
+    background: var(--white);
+    border-top: 1px solid rgba(43, 42, 47, 0.1);
+  }
+
+  .mobileBackBtn,
+  .mobileBottomBar > button {
+    flex: 1;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1279px) {
+  .wrapper {
+    grid-template-columns: minmax(260px, 300px) minmax(0, 1fr);
+    gap: 40px;
+    padding-right: 0;
+  }
+
+  .sidebar {
+    padding: 32px 24px 40px;
+  }
+
+  .formTopRow {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .metaFields {
+    flex-wrap: wrap;
+  }
+
+  .sendButton {
+    min-width: 220px;
+  }
+}

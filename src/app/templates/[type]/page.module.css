@@ -1,0 +1,12 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  width: 100%;
+}
+
+@media (min-width: 1280px) {
+  .page {
+    gap: 64px;
+  }
+}

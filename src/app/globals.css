@@ -13,7 +13,7 @@
   --white: #FDFCFA;
 
 
-  --fs-title-main: 110px;
+  --fs-title-main: 120px;
   --fs-title-1: 80px;
   --fs-title-2: 48px;
   --fs-title-3: 40px;
@@ -28,26 +28,25 @@
   --lh-115: 1.15;
 }
 
-@media (max-width: 1024px) {
+@media (min-width: 768px) and (max-width: 1279px) {
   :root {
-    --fs-title-main: 64px;
-    --fs-title-1: 48px;
+    --fs-title-main: 59px;
     --fs-title-2: 36px;
-    --fs-title-3: 32px;
+    --fs-title-3: 30px;
     --fs-title-4: 24px;
-    --fs-title-article: 20px;
-    --fs-text-main: 20px;
+    --fs-text-main: 16px;
     --fs-text-nav: 16px;
   }
 }
 
-@media (max-width: 640px) {
+/* Mobile — Figma 330:380, единый диапазон до 767px */
+@media (max-width: 767px) {
   :root {
     --fs-title-main: 36px;
     --fs-title-1: 28px;
     --fs-title-2: 24px;
     --fs-title-3: 20px;
-    --fs-title-4: 16px;
+    --fs-title-4: 18px;
     --fs-title-article: 16px;
     --fs-text-main: 16px;
     --fs-text-nav: 14px;

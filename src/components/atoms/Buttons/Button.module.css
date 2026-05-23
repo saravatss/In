@@ -1,46 +1,72 @@
 .button {
-  display: inline-flex;              
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-
-  padding: 12px 40px;                
-  gap: 8px;                          
-
-  border-radius: 48px;
+  gap: 8px;
+  border-radius: 32px;
   border: none;
   cursor: pointer;
-
   font-size: 16px;
   font-weight: 500;
-
-  transition: 0.2s ease;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 .textButton {
   font-weight: 700;
-  font-family: Manrope;
+  font-family: Manrope, sans-serif;
 }
-
 
 .primary {
   background: var(--green-400);
-  color: var(--black-400);
+  color: var(--black-200);
+}
+
+.primary:hover:not(:disabled) {
+  background: var(--black-200);
+  color: var(--white);
 }
 
 .secondary {
   background: var(--yellow-400);
-  color: var(--black-400);
+  color: var(--black-200);
 }
 
+.outline {
+  background: transparent;
+  border: 2px solid rgba(43, 42, 47, 0.8);
+  color: var(--black-100);
+}
 
+.outline:hover:not(:disabled) {
+  background: var(--black-200);
+  color: var(--white);
+  border-color: var(--black-200);
+}
+
+.muted,
+.button:disabled {
+  background: #b9b8bc;
+  color: #7a7a7a;
+  cursor: not-allowed;
+}
+
+.outline:disabled {
+  background: transparent;
+  border-color: rgba(43, 42, 47, 0.25);
+  color: rgba(43, 42, 47, 0.4);
+}
+
+.button:disabled .icon {
+  opacity: 0.55;
+}
 
 .lg {
-  padding: 16px 40px;
+  padding: 16px 32px;
   font-size: 20px;
 }
 
 .md {
-  padding: 16px 32px;
+  padding: 12px 24px;
   font-size: 18px;
 }
 
@@ -49,11 +75,38 @@
   font-size: 16px;
 }
 
+.lg.withIcon {
+  gap: 10px;
+}
 
+.md.withIcon {
+  gap: 8px;
+}
+
+.sm.withIcon {
+  gap: 8px;
+}
 
 .icon {
-  width: 20px;
-  height: 20px;
+  flex-shrink: 0;
   object-fit: contain;
 }
 
+.lg .icon {
+  width: 18px;
+  height: 18px;
+}
+
+.md .icon {
+  width: 16px;
+  height: 16px;
+}
+
+.sm .icon {
+  width: 14px;
+  height: 14px;
+}
+
+.primary:hover:not(:disabled) .icon {
+  filter: brightness(0) invert(1);
+}

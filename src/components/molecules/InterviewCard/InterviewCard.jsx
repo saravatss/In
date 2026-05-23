@@ -1,6 +1,15 @@
 import styles from "./InterviewCard.module.css";
-import { Button } from "@/components/atoms/Buttons/Button";
 import Link from "next/link";
+
+function InterviewPortrait({ image, alt }) {
+  return (
+    <div className={styles.portrait}>
+      <span className={styles.circleOuter} />
+      <span className={styles.circleInner} />
+      <img className={styles.photo} src={image} alt={alt} />
+    </div>
+  );
+}
 
 export default function InterviewCard({
   id,
@@ -13,13 +22,15 @@ export default function InterviewCard({
   return (
     <Link href={`/interviews/${id}`} className={styles.cardLink}>
       <article className={`${styles.card} ${reverse ? styles.reverse : ""}`}>
+        <InterviewPortrait image={image} alt={alt} />
+
         <div className={styles.content}>
-          <h3 className="title-4">{title}</h3>
-          <p className="text-main">{description}</p>
-          <Button variant="secondary" size="sm">Читать</Button>
-        </div>
-        <div className={styles.imageWrapper}>
-          <img src={image} alt={alt} />
+          <h3 className={`${styles.cardTitle} title-4`}>{title}</h3>
+
+          <div className={styles.textBlock}>
+            <p className={`${styles.description} text-main`}>{description}</p>
+            <span className={styles.readButton}>Читать</span>
+          </div>
         </div>
       </article>
     </Link>

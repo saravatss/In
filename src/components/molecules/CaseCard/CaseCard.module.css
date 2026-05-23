@@ -9,11 +9,10 @@
   color: inherit;
 }
 
-
 .imageWrapper {
   position: relative;
   overflow: hidden;
-  height: 260px;
+  height: 98px;
 }
 
 .imageWrapper img {
@@ -22,16 +21,50 @@
   object-fit: cover;
 }
 
-
 .title {
-  margin-top: 20px; 
+  margin-top: 12px;
   text-decoration: none;
+  font-size: 14px;
+  line-height: 1.15;
+  font-weight: 700;
 }
 
 .tags {
-  margin-top: 16px; 
+  margin-top: 12px;
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 4px;
   color: var(--black-100);
+}
+
+@media (min-width: 768px) {
+  .imageWrapper {
+    height: 143px;
+  }
+
+  .title {
+    margin-top: 16px;
+    font-size: 16px;
+  }
+
+  .tags {
+    margin-top: 16px;
+    gap: 4px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .imageWrapper {
+    height: 221px;
+  }
+
+  .title {
+    margin-top: 20px;
+    font-size: var(--fs-title-article);
+  }
+
+  .tags {
+    margin-top: 16px;
+    gap: 8px;
+  }
 }
