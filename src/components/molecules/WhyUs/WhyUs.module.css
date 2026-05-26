@@ -79,19 +79,16 @@
   background: rgba(43, 42, 47, 0.1);
 }
 
-/* Figma M_Widget — 279:2491 */
 .bgNewNote {
   background-size: 206% 191%;
   background-position: 13% 28%;
 }
 
-/* 479:2305 — imgMWidget: w 145.85%, h 135.39%, left -45.9%, top -17.59% */
 .bgPickTemplate {
   background-size: 146% 135%;
   background-position: 100% 50%;
 }
 
-/* 479:2311 — тот же imgMWidget, кадр в жёлто-оранжевую зону (верхний левый угол) */
 .bgOverview {
   background-size: 200% 185%;
   background-position: 0% 0%;

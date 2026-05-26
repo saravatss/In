@@ -1,4 +1,20 @@
 .nav {
   display: flex;
+  align-items: center;
   gap: 32px;
+}
+
+.active {
+  font-weight: 700;
+}
+
+@media (max-width: 766px) {
+  .nav {
+    flex: 1 1 auto;
+    min-width: 0;
+    justify-content: flex-end;
+    gap: 20px;
+    flex-wrap: nowrap;
+    max-width: 100%;
+  }
 }

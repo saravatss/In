@@ -117,15 +117,35 @@
   color: var(--black-200);
 }
 
-.sidebarExport {
+.exportBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 16px 32px;
+  border: 2px solid var(--black-100);
+  border-radius: 32px;
+  background: transparent;
   opacity: 0.6;
-  color: var(--black-100);
-  border-color: var(--black-100);
-  white-space: nowrap;
+  cursor: pointer;
+  font-family: Manrope, sans-serif;
   font-size: 16px;
-  padding-left: 20px;
-  padding-right: 20px;
+  font-weight: 700;
+  line-height: normal;
+  color: var(--black-100);
+  white-space: nowrap;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.exportBtn:hover {
+  background: var(--black-200);
+  color: var(--white);
+  border-color: var(--black-200);
+  opacity: 1;
 }
 
 .mobileBar,
@@ -137,6 +157,7 @@
   display: flex;
   flex-direction: column;
   gap: 56px;
+  width: 100%;
   min-width: 0;
   max-width: 920px;
 }
@@ -146,6 +167,12 @@
   align-items: flex-end;
   justify-content: space-between;
   gap: 24px;
+  width: 100%;
+  min-width: 0;
+}
+
+.formHeaderBlock {
+  display: contents;
 }
 
 .formHeaderLeft {
@@ -153,6 +180,25 @@
   gap: 22px;
   align-items: flex-start;
   min-width: 0;
+}
+
+.formExport {
+  display: none;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.formExport img {
+  width: 26px;
+  height: 26px;
+  display: block;
 }
 
 .stepBadge {
@@ -178,6 +224,8 @@
   gap: 12px;
   padding-top: 8px;
   max-width: 314px;
+  min-width: 0;
+  flex: 1 1 auto;
 }
 
 .formTitle {
@@ -205,13 +253,19 @@
   display: flex;
   gap: 8px;
   align-items: flex-end;
-  flex-shrink: 0;
+  flex-wrap: wrap;
+  flex-shrink: 1;
+  min-width: 0;
+  max-width: 100%;
 }
 
 .metaField {
   display: flex;
   flex-direction: column;
   gap: 8px;
+  flex: 1 1 auto;
+  min-width: 0;
+  max-width: 100%;
 }
 
 .metaLabel {
@@ -224,7 +278,8 @@
 
 .metaInput,
 .datePicker {
-  width: 238px;
+  width: 100%;
+  max-width: 238px;
   padding: 8px 16px;
   border: 1px solid rgba(43, 42, 47, 0.3);
   border-radius: 8px;
@@ -243,8 +298,9 @@
 }
 
 .datePicker {
-  width: auto;
-  min-width: 180px;
+  width: 100%;
+  max-width: 238px;
+  min-width: 0;
   color-scheme: light;
 }
 
@@ -257,6 +313,8 @@
   display: flex;
   flex-direction: column;
   gap: 24px;
+  width: 100%;
+  min-width: 0;
 }
 
 .textareaWrap {
@@ -264,6 +322,8 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  width: 100%;
+  min-width: 0;
   min-height: 319px;
   padding: 32px;
   border: 1.5px solid rgba(43, 42, 47, 0.3);
@@ -308,9 +368,12 @@
   display: flex;
   flex-direction: column;
   gap: 24px;
+  width: 100%;
+  min-width: 0;
   padding: 32px;
   border-radius: 12px;
   background: var(--green-100);
+  box-sizing: border-box;
 }
 
 .examplesLabel {
@@ -346,15 +409,21 @@
 
 .sendSection {
   display: flex;
+  flex-wrap: wrap;
   gap: 32px;
   align-items: flex-end;
   justify-content: flex-end;
+  width: 100%;
+  min-width: 0;
 }
 
 .telegramField {
   display: flex;
   flex-direction: column;
   gap: 8px;
+  flex: 1 1 auto;
+  min-width: 0;
+  max-width: 100%;
 }
 
 .telegramLabel {
@@ -367,7 +436,8 @@
 }
 
 .telegramInput {
-  width: 198px;
+  width: 100%;
+  max-width: 198px;
   padding: 8px 16px;
   border: 1px solid rgba(43, 42, 47, 0.3);
   border-radius: 8px;
@@ -386,15 +456,20 @@
 }
 
 .sendButton {
-  min-width: 287px;
-  flex-shrink: 0;
+  min-width: min(287px, 100%);
+  max-width: 100%;
+  flex-shrink: 1;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 766px) {
   .wrapper {
     grid-template-columns: 1fr;
     gap: 16px;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
     padding: 0 0 88px;
+    overflow-x: clip;
   }
 
   .sidebar {
@@ -404,10 +479,14 @@
   .mobileBar {
     display: flex;
     flex-direction: column;
-    gap: 12px;
-    padding: 16px;
-    border-radius: 20px;
-    background: var(--green-100);
+    gap: 8px;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    padding: 0;
+    border-radius: 0;
+    background: transparent;
+    box-sizing: border-box;
   }
 
   .mobileTop {
@@ -420,47 +499,64 @@
     margin: 0;
     font-family: Manrope, sans-serif;
     font-size: 14px;
-    font-weight: 700;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: -0.02em;
     color: var(--black-200);
   }
 
-  .mobileExport {
-    width: 40px;
-    height: 40px;
-    border: 2px solid rgba(43, 42, 47, 0.6);
-    border-radius: 50%;
-    background: transparent;
+  .mobileSteps {
+    position: relative;
     display: flex;
     align-items: center;
-    justify-content: center;
-    cursor: pointer;
-  }
-
-  .mobileExport img {
-    width: 16px;
-    height: 16px;
-  }
-
-  .mobileSteps {
-    display: flex;
-    gap: 8px;
+    gap: 10px;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
     overflow-x: auto;
-    padding-bottom: 4px;
+    overflow-y: hidden;
+    padding: 4px 6px;
+    border-radius: 32px;
+    background: rgba(205, 228, 203, 0.3);
+    box-sizing: border-box;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .mobileSteps::-webkit-scrollbar {
+    display: none;
+  }
+
+  .mobileSteps::after {
+    content: "";
+    position: sticky;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: 56px;
+    margin-left: -56px;
+    pointer-events: none;
+    background: linear-gradient(90deg, rgba(205, 228, 203, 0) 0%, rgba(205, 228, 203, 0.3) 35%, rgba(205, 228, 203, 0.3) 100%);
   }
 
   .mobileStepPill {
     flex-shrink: 0;
-    width: 36px;
-    height: 36px;
+    width: 40px;
+    height: 40px;
     border: none;
-    border-radius: 50%;
-    background: transparent;
+    border-radius: 59px;
+    background: var(--green-400);
     font-family: Manrope, sans-serif;
-    font-size: 14px;
-    font-weight: 700;
-    color: var(--black-200);
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.15;
+    letter-spacing: -0.03em;
+    color: rgba(43, 42, 47, 0.8);
     cursor: pointer;
-    transition: background-color 0.15s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.15s ease, color 0.15s ease;
   }
 
   .mobileStepPill:hover:not(.mobileStepPillActive),
@@ -469,31 +565,63 @@
   }
 
   .mobileStepPillActive {
-    background: var(--green-400);
+    width: 48px;
+    height: 48px;
+    background: var(--black-200);
+    color: var(--green-400);
+    font-size: 24px;
+    font-weight: 600;
+    letter-spacing: -0.03em;
   }
 
   .formPanel {
     gap: 24px;
-    max-width: none;
+    width: 100%;
+    max-width: 100%;
   }
 
   .formTopRow {
     flex-direction: column;
     align-items: stretch;
+    gap: 20px;
+    width: 100%;
+  }
+
+  .formHeaderBlock {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 12px;
+    width: 100%;
+    min-width: 0;
   }
 
   .formHeaderLeft {
-    gap: 16px;
+    gap: 0;
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+
+  .formTitles {
+    max-width: none;
+    gap: 4px;
+    padding-top: 0;
   }
 
   .stepBadge {
-    width: 56px;
-    height: 56px;
-    font-size: 24px;
+    display: none;
+  }
+
+  .formExport {
+    display: flex;
   }
 
   .formTitle {
-    font-size: var(--fs-title-4);
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1.08;
+    letter-spacing: -0.03em;
+    overflow-wrap: anywhere;
   }
 
   .formSubtitle {
@@ -503,11 +631,19 @@
   .metaFields {
     flex-direction: column;
     align-items: stretch;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .metaField {
+    width: 100%;
+    max-width: 100%;
   }
 
   .metaInput,
   .datePicker {
     width: 100%;
+    max-width: none;
   }
 
   .textareaWrap {
@@ -543,8 +679,14 @@
     gap: 16px;
   }
 
+  .telegramField {
+    width: 100%;
+    max-width: 100%;
+  }
+
   .telegramInput {
     width: 100%;
+    max-width: none;
   }
 
   .sendButton {
@@ -570,15 +712,77 @@
   }
 }
 
-@media (min-width: 768px) and (max-width: 1279px) {
+@media (min-width: 767px) and (max-width: 1279px) {
   .wrapper {
-    grid-template-columns: minmax(260px, 300px) minmax(0, 1fr);
-    gap: 40px;
-    padding-right: 0;
+    grid-template-columns: minmax(180px, 224px) minmax(0, 1fr);
+    gap: clamp(16px, 4vw, 40px);
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    padding: 0;
+    box-sizing: border-box;
   }
 
   .sidebar {
     padding: 32px 24px 40px;
+    min-width: 0;
+  }
+
+  .stepCounter {
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: -0.03em;
+  }
+
+  .stepItem {
+    max-width: 100%;
+    min-height: 52px;
+    padding-left: 16px;
+  }
+
+  .stepNumber {
+    width: 25px;
+    height: 25px;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: -0.03em;
+  }
+
+  .stepNumberActive {
+    font-size: 17px;
+    letter-spacing: -0.03em;
+  }
+
+  .stepTitle {
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+  }
+
+  .stepItemActive .stepTitle {
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+
+  .stepList::before {
+    left: 29px;
+    top: 52px;
+    bottom: 52px;
+  }
+
+  .exportBtn {
+    padding: 12px 24px;
+    border-width: 1px;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: normal;
+    white-space: nowrap;
+  }
+
+  .formPanel {
+    max-width: 100%;
+    gap: 32px;
   }
 
   .formTopRow {
@@ -586,11 +790,59 @@
     align-items: stretch;
   }
 
+  .stepBadge {
+    width: 65px;
+    height: 64px;
+    font-size: 40px;
+  }
+
+  .formTitle {
+    font-size: 22px;
+    letter-spacing: -0.03em;
+  }
+
+  .formSubtitle {
+    font-size: 16px;
+  }
+
+  .metaLabel {
+    font-size: 18px;
+    letter-spacing: -0.03em;
+  }
+
+  .metaInput,
+  .datePicker,
+  .textarea,
+  .charCounter {
+    font-size: 14px;
+    letter-spacing: -0.02em;
+  }
+
   .metaFields {
     flex-wrap: wrap;
+    width: 100%;
+  }
+
+  .examplesLabel {
+    font-size: 18px;
+    letter-spacing: -0.03em;
+  }
+
+  .exampleChip {
+    font-size: 14px;
+    letter-spacing: -0.02em;
   }
 
   .sendButton {
-    min-width: 220px;
+    min-width: min(220px, 100%);
+    max-width: 100%;
+  }
+}
+
+@media (min-width: 1280px) {
+  .wrapper {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
   }
 }

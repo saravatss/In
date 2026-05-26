@@ -1,7 +1,9 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import styles from "./TemplateOverview.module.css";
+import { Button, BUTTON_ARROW_ICON } from "@/components/atoms/Buttons/Button";
 
 const APPROACH_TABS = [
   { id: "cbt", label: "КПТ" },
@@ -11,15 +13,14 @@ const APPROACH_TABS = [
   { id: "integrative", label: "Интегративная терапия" },
 ];
 
-const SECTION_ARROW = "/images/arrowHorizontal.svg";
-
 export function TemplateOverview({ templates }) {
-  const availableTabs = APPROACH_TABS.filter((tab) =>
+  const router = useRouter();
+  const tabs = APPROACH_TABS.filter((tab) =>
     templates.some((template) => template.id === tab.id)
   );
 
   const [activeApproachId, setActiveApproachId] = useState(
-    availableTabs[0]?.id ?? templates[0]?.id
+    tabs[0]?.id ?? templates[0]?.id
   );
   const [expandedSectionId, setExpandedSectionId] = useState(null);
 
@@ -45,7 +46,7 @@ export function TemplateOverview({ templates }) {
     <div className={styles.root}>
       <div className={styles.tabsBar}>
         <div className={styles.tabs} role="tablist" aria-label="Подход">
-          {availableTabs.map((tab) => {
+          {tabs.map((tab) => {
             const isActive = activeApproachId === tab.id;
 
             return (
@@ -71,8 +72,7 @@ export function TemplateOverview({ templates }) {
       >
         {activeTemplate.sections.map((section) => {
           const isExpanded = expandedSectionId === section.id;
-          const description =
-            section.overviewDescription || section.subtitle || "";
+          const description = section.overview || section.subtitle || "";
 
           return (
             <article
@@ -88,11 +88,11 @@ export function TemplateOverview({ templates }) {
                 }`}
                 onClick={() => handleSectionToggle(section.id)}
                 aria-expanded={isExpanded}
-                aria-controls={`overview-section-${section.id}`}
+                aria-controls={`section-${section.id}`}
               >
                 <span className={styles.sectionTitle}>{section.title}</span>
                 <img
-                  src={SECTION_ARROW}
+                  src={BUTTON_ARROW_ICON}
                   alt=""
                   aria-hidden="true"
                   className={`${styles.sectionArrow} ${
@@ -103,10 +103,24 @@ export function TemplateOverview({ templates }) {
 
               {isExpanded && description ? (
                 <div
-                  id={`overview-section-${section.id}`}
+                  id={`section-${section.id}`}
                   className={styles.sectionBody}
                 >
                   <p className={styles.sectionText}>{description}</p>
+                  <Button
+                    type="button"
+                    variant="outline"
+                    size="sm"
+                    icon={BUTTON_ARROW_ICON}
+                    className={styles.goButton}
+                    onClick={() =>
+                      router.push(
+                        `/templates/${activeApproachId}?step=${section.id}`
+                      )
+                    }
+                  >
+                    Перейти
+                  </Button>
                 </div>
               ) : null}
             </article>

@@ -1,14 +1,25 @@
 .headerText {
-  font-weight: 600;
-  line-height: 1.15;
+  font-weight: 500;
+  line-height: normal;
   max-width: 227px;
   font-size: 12px;
+  letter-spacing: -0.02em;
 }
 
-@media (min-width: 768px) {
+@media (max-width: 766px) {
+  .headerText {
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: -0.28px;
+    line-height: normal;
+  }
+}
+
+@media (min-width: 767px) {
   .headerText {
     max-width: 251px;
     font-size: 16px;
+    font-weight: 600;
   }
 }
 

@@ -1,16 +1,6 @@
 import styles from "./InterviewCard.module.css";
 import Link from "next/link";
 
-function InterviewPortrait({ image, alt }) {
-  return (
-    <div className={styles.portrait}>
-      <span className={styles.circleOuter} />
-      <span className={styles.circleInner} />
-      <img className={styles.photo} src={image} alt={alt} />
-    </div>
-  );
-}
-
 export default function InterviewCard({
   id,
   title,
@@ -22,7 +12,11 @@ export default function InterviewCard({
   return (
     <Link href={`/interviews/${id}`} className={styles.cardLink}>
       <article className={`${styles.card} ${reverse ? styles.reverse : ""}`}>
-        <InterviewPortrait image={image} alt={alt} />
+        <div className={styles.portrait}>
+          <span className={styles.circleOuter} />
+          <span className={styles.circleInner} />
+          <img className={styles.photo} src={image} alt={alt} />
+        </div>
 
         <div className={styles.content}>
           <h3 className={`${styles.cardTitle} title-4`}>{title}</h3>

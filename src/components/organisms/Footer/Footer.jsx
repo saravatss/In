@@ -13,9 +13,9 @@ const FOOTER_LINKS = [
   { href: "/interviews", label: "Интервью" },
 ];
 
-export function Footer() {
+export function Footer({ className = "" }) {
   return (
-    <footer className={styles.footer}>
+    <footer className={`${styles.footer} ${className}`.trim()}>
       <div className={styles.container}>
         <div className={styles.main}>
           <div className={styles.subscribe}>

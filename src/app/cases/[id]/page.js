@@ -4,24 +4,22 @@ import styles from "./page.module.css";
 import { Logo } from "@/components/atoms/Header/Logo";
 import { Navigation } from "@/components/molecules/Navigation/Navigation";
 import { Footer } from "@/components/organisms/Footer/Footer";
+import { ShareFooter } from "@/components/molecules/ShareFooter/ShareFooter";
 
 export default async function CasePage({ params }) {
   const { id } = await params;
 
-  const article = casesData.find(
-    (item) => item.id === Number(id)
-  );
+  const article = casesData.find((item) => item.id === Number(id));
 
   if (!article) return notFound();
 
   return (
     <div className={styles.page}>
       <div className={styles.container}>
-
         <div className={styles.top}>
-        <Logo />
-        <Navigation />
-      </div>
+          <Logo />
+          <Navigation />
+        </div>
 
         <div className={styles.headerBlock}>
           <div className={styles.left}>
@@ -59,20 +57,7 @@ export default async function CasePage({ params }) {
           dangerouslySetInnerHTML={{ __html: article.content }}
         />
 
-        <div className={styles.footerRow}>
-          <span className={styles.date}>
-          {article.date}
-        </span>
-
-          <div className={styles.share}>
-            <span className={styles.shareText}>Поделиться</span>
-            <img
-                src="/images/share.svg"
-                alt="Поделиться"
-                className={styles.shareIcon}
-            />
-          </div>
-        </div>
+        <ShareFooter date={article.date} sharePath={`/cases/${id}`} />
       </div>
 
       <Footer />

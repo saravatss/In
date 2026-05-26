@@ -4,10 +4,6 @@ import { formatAnalysisMessage } from "./formatAnalysisMessage";
 const TELEGRAM_API_BASE = "https://api.telegram.org";
 const REQUEST_TIMEOUT_MS = 8000;
 
-/**
- * Отправляет анализ в Telegram через Bot API.
- * Токен берётся из process.env.TELEGRAM_BOT_TOKEN (см. config.js).
- */
 export async function sendAnalysisToTelegram(payload) {
   const { botToken, chatId, isConfigured } = getTelegramConfig();
 

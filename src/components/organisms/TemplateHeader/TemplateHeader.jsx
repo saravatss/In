@@ -21,7 +21,9 @@ export function TemplateHeader({ displayName, description }) {
           </Link>
         </div>
 
-        <Description>{description}</Description>
+        <div className={styles.description}>
+          <Description>{description}</Description>
+        </div>
       </div>
     </header>
   );

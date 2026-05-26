@@ -28,7 +28,7 @@
   --lh-115: 1.15;
 }
 
-@media (min-width: 768px) and (max-width: 1279px) {
+@media (min-width: 767px) and (max-width: 1279px) {
   :root {
     --fs-title-main: 59px;
     --fs-title-2: 36px;
@@ -39,8 +39,7 @@
   }
 }
 
-/* Mobile — Figma 330:380, единый диапазон до 767px */
-@media (max-width: 767px) {
+@media (max-width: 766px) {
   :root {
     --fs-title-main: 36px;
     --fs-title-1: 28px;

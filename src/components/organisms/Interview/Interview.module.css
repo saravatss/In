@@ -38,6 +38,8 @@
   align-items: center;
   gap: 32px;
   width: 100%;
+  max-width: 1170px;
+  margin-inline: auto;
   margin-bottom: 128px;
 }
 
@@ -47,37 +49,28 @@
 
 
 
-/* Tablet — Figma 591:6047 */
-
 @media (min-width: 768px) {
-
   .container {
-
     gap: 56px;
-
     align-items: center;
-
+    width: 100%;
   }
 
-
+  .list {
+    width: 100%;
+    max-width: 1170px;
+    align-items: center;
+  }
 
   .titleIn {
-
     max-width: 490px;
-
     text-align: center;
-
     line-height: 1.03;
-
     font-size: 36px;
-
   }
-
 }
 
 
-
-/* Desktop — Figma 279:2518, 423:4048 */
 
 @media (min-width: 1280px) {
 

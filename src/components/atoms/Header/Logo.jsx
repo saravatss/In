@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export function Logo() {
   return (
-    <Link href="/" className={styles.link} aria-label="Lightin' — на главную">
+    <Link href="/" className={styles.link} aria-label="На главную">
       <span className={styles.logoWrap}>
         <Image
           className={styles.logoWord}

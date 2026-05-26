@@ -10,7 +10,7 @@ import {
   AnalysisToast,
 } from "@/components/molecules/AnalysisNotification/AnalysisNotification";
 
-const EMPTY_META = {
+const defaultMeta = {
   clientName: "",
   sessionDate: "",
   telegramUsername: "",
@@ -29,7 +29,7 @@ function formatDateForExport(isoDate) {
   });
 }
 
-function resolveStepIndex(sections, initialStepId) {
+function findStepIndex(sections, initialStepId) {
   if (!initialStepId) return 0;
 
   const index = sections.findIndex((section) => section.id === initialStepId);
@@ -44,7 +44,7 @@ export function TemplateLayout({
   initialStepId,
 }) {
   const initialStepIndex = useMemo(
-    () => resolveStepIndex(sections, initialStepId),
+    () => findStepIndex(sections, initialStepId),
     [sections, initialStepId]
   );
   const [activeStep, setActiveStep] = useState(initialStepIndex);
@@ -52,7 +52,7 @@ export function TemplateLayout({
   useEffect(() => {
     setActiveStep(initialStepIndex);
   }, [initialStepIndex]);
-  const [meta, setMeta] = useState(EMPTY_META);
+  const [meta, setMeta] = useState(defaultMeta);
   const [confirmModal, setConfirmModal] = useState(null);
   const [toast, setToast] = useState(null);
   const [isSending, setIsSending] = useState(false);
@@ -179,6 +179,7 @@ export function TemplateLayout({
                   <button
                     key={section.id}
                     type="button"
+                    aria-label={`${index + 1}. ${section.title}`}
                     className={`${styles.stepItem} ${isActive ? styles.stepItemActive : ""}`}
                     onClick={() => setActiveStep(index)}
                   >
@@ -194,14 +195,13 @@ export function TemplateLayout({
             </nav>
           </div>
 
-          <Button
-            variant="outline"
-            size="lg"
-            className={styles.sidebarExport}
+          <button
+            type="button"
+            className={styles.exportBtn}
             onClick={requestExport}
           >
             Экспортировать в PDF
-          </Button>
+          </button>
         </aside>
 
         <div className={styles.mobileBar}>
@@ -209,14 +209,6 @@ export function TemplateLayout({
             <p className={styles.mobileStepCounter}>
               Шаг {activeStep + 1} из {totalSteps}
             </p>
-            <button
-              type="button"
-              className={styles.mobileExport}
-              onClick={requestExport}
-              aria-label="Экспортировать в PDF"
-            >
-              <img src="/images/share.svg" alt="" aria-hidden="true" />
-            </button>
           </div>
 
           <div className={styles.mobileSteps} role="tablist" aria-label="Шаги">
@@ -237,16 +229,26 @@ export function TemplateLayout({
 
         <section className={styles.formPanel} aria-labelledby="step-title">
           <div className={styles.formTopRow}>
-            <div className={styles.formHeaderLeft}>
-              <div className={styles.stepBadge}>{activeStep + 1}</div>
-              <div className={styles.formTitles}>
-                <h2 id="step-title" className={styles.formTitle}>
-                  {currentSection.title}
-                </h2>
-                {currentSection.subtitle ? (
-                  <p className={styles.formSubtitle}>{currentSection.subtitle}</p>
-                ) : null}
+            <div className={styles.formHeaderBlock}>
+              <div className={styles.formHeaderLeft}>
+                <div className={styles.stepBadge}>{activeStep + 1}</div>
+                <div className={styles.formTitles}>
+                  <h2 id="step-title" className={styles.formTitle}>
+                    {currentSection.title}
+                  </h2>
+                  {currentSection.subtitle ? (
+                    <p className={styles.formSubtitle}>{currentSection.subtitle}</p>
+                  ) : null}
+                </div>
               </div>
+              <button
+                type="button"
+                className={styles.formExport}
+                onClick={requestExport}
+                aria-label="Экспортировать в PDF"
+              >
+                <img src="/images/download.svg" alt="" aria-hidden="true" />
+              </button>
             </div>
 
             <div className={styles.metaFields}>

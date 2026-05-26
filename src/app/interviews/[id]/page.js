@@ -4,8 +4,8 @@ import styles from "./page.module.css";
 import { Logo } from "@/components/atoms/Header/Logo";
 import { Navigation } from "@/components/molecules/Navigation/Navigation";
 import { Footer } from "@/components/organisms/Footer/Footer";
+import { ShareFooter } from "@/components/molecules/ShareFooter/ShareFooter";
 
-// Обязательно для статической генерации (fast builds & SEO)
 export async function generateStaticParams() {
   return interviewData.map((item) => ({
     id: String(item.id),
@@ -57,13 +57,7 @@ export default async function InterviewPage({ params }) {
           dangerouslySetInnerHTML={{ __html: interview.content }}
         />
 
-        <div className={styles.footerRow}>
-          <span className={styles.date}>{interview.date}</span>
-          <div className={styles.share}>
-            <span className={styles.shareText}>Поделиться</span>
-            <img src="/images/share.svg" alt="Поделиться" className={styles.shareIcon} />
-          </div>
-        </div>
+        <ShareFooter date={interview.date} sharePath={`/interviews/${id}`} />
       </div>
       <Footer />
     </div>

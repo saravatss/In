@@ -30,17 +30,25 @@ export default function Templates() {
   };
 
   return (
-    <div>
+    <div className={styles.page}>
       <Header
+        className={styles.analysisHeader}
         title="Анализ"
         description="Здесь вы можете быстро и легко подвести итог и проанализировать встречу с клиентом."
       />
 
       <div className={styles.hero}>
         <div className={styles.overlay}>
+          <img
+            src="/images/templateBg.svg"
+            alt=""
+            className={styles.overlayBg}
+            aria-hidden="true"
+          />
           <div className={styles.overlayContent}>
             <h1 className={`${styles.title} title-2`}>
-              С каким подходом вы работаете?
+              <span className={styles.titleLine}>С каким подходом</span>
+              <span className={styles.titleLine}>вы работаете?</span>
             </h1>
 
             <div className={styles.tags}>
@@ -62,7 +70,7 @@ export default function Templates() {
           <div className={styles.buttonWrapper}>
             <Button
               variant="primary"
-              size="lg"
+              size="sm"
               icon={BUTTON_ARROW_ICON}
               disabled={!selectedApproach}
               onClick={handleContinue}
@@ -74,7 +82,7 @@ export default function Templates() {
         </div>
       </div>
 
-      <Footer />
+      <Footer className={styles.pageFooter} />
     </div>
   );
 }

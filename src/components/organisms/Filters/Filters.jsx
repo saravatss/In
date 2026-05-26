@@ -3,12 +3,70 @@
 import { useState } from "react";
 import styles from "./Filters.module.css";
 
-const Dropdown = ({ label, options, value, onChange }) => {
+const FILTER_FIELDS = [
+  {
+    key: "approach",
+    label: "Подход",
+    options: [
+      "КПТ",
+      "Гештальт-терапия",
+      "Психоанализ",
+      "Экзистенциальная терапия",
+      "Интегративная терапия",
+    ],
+  },
+  {
+    key: "type",
+    label: "Тип",
+    options: [
+      "Эмоциональные состояния",
+      "Отношения, взаимодействия",
+      "Личностное развитие",
+      "Учеба и работа",
+      "Процесс психотерапии",
+      "Тревога и страхи",
+      "Тело, психосоматика",
+    ],
+  },
+  {
+    key: "age",
+    label: "Возраст",
+    options: ["Детство", "Подросток", "Взрослый", "Пожилой"],
+  },
+  {
+    key: "gender",
+    label: "Пол",
+    options: ["Женский", "Мужской"],
+  },
+  {
+    key: "format",
+    label: "Формат",
+    options: ["Недавняя", "Длительная", "Первая сессия"],
+  },
+];
+
+const SORT_FIELD = {
+  key: "sort",
+  label: "Сортировать по",
+  options: ["Сначала новые", "Сначала старые"],
+};
+
+const defaultFilters = {
+  search: "",
+  approach: "",
+  type: "",
+  age: "",
+  gender: "",
+  format: "",
+  sort: "",
+};
+
+function Dropdown({ label, options, value, onChange, fullWidth = false, withIcon = false }) {
   const [open, setOpen] = useState(false);
 
   const handleSelect = (option) => {
     if (value === option) {
-      onChange(""); // повторный клик — сброс
+      onChange("");
     } else {
       onChange(option);
     }
@@ -16,38 +74,54 @@ const Dropdown = ({ label, options, value, onChange }) => {
   };
 
   return (
-    <div className={styles.dropdown}>
+    <div
+      className={`${styles.dropdown} ${fullWidth ? styles.dropdownFull : ""}`}
+    >
       <button
         type="button"
-        className={styles.dropdownButton}
+        className={`${styles.dropdownButton} ${withIcon ? styles.dropdownButtonWithIcon : ""}`}
         onClick={() => setOpen(!open)}
+        aria-expanded={open}
       >
-        <span>{value || label}</span>
+        {withIcon ? (
+          <img
+            src="/images/filter.svg"
+            alt=""
+            className={styles.filterIcon}
+            aria-hidden="true"
+          />
+        ) : null}
+        <span className={styles.dropdownLabel}>{value || label}</span>
         <img
           src="/images/arrowDown.svg"
-          alt="arrow"
+          alt=""
           className={`${styles.arrow} ${open ? styles.rotate : ""}`}
+          aria-hidden="true"
         />
       </button>
 
-      {open && (
-        <div className={styles.dropdownMenu}>
+      {open ? (
+        <div className={styles.dropdownMenu} role="listbox">
           {options.map((option) => (
-            <div
+            <button
               key={option}
+              type="button"
+              role="option"
               className={styles.dropdownItem}
               onClick={() => handleSelect(option)}
             >
               {option}
-            </div>
+            </button>
           ))}
         </div>
-      )}
+      ) : null}
     </div>
   );
-};
+}
 
-export function Filters({ filters, setFilters }) {
+export function Filters({ filters, setFilters, mobile = false }) {
+  const [mobileOpen, setMobileOpen] = useState(false);
+
   const handleChange = (key, value) => {
     setFilters((prev) => ({
       ...prev,
@@ -56,88 +130,47 @@ export function Filters({ filters, setFilters }) {
   };
 
   const resetFilters = () => {
-    setFilters({
-      search: "",
-      approach: "",
-      type: "",
-      age: "",
-      gender: "",
-      format: "",
-      sort: "",
-    });
+    setFilters({ ...defaultFilters });
+    setMobileOpen(false);
   };
 
-  const hasActiveFilters = Object.values(filters).some((v) => v !== "");
+  const hasActiveFilters = Object.values(filters).some((value) => value !== "");
+
+  const renderDropdown = (field, options = {}) => (
+    <Dropdown
+      key={field.key}
+      label={field.label}
+      value={filters[field.key]}
+      onChange={(value) => handleChange(field.key, value)}
+      options={field.options}
+      {...options}
+    />
+  );
 
   return (
-    <div className={styles.wrapper}>
+    <div
+      className={`${styles.wrapper} ${mobile ? styles.wrapperMobile : ""}`}
+    >
       <div className={styles.searchWrapper}>
-          <img
-            src="/images/search.svg"
-            alt="search"
-            className={styles.searchIcon}
-          />
-
-          <input
-            type="text"
-            placeholder="Поиск"
-            value={filters.search || ""}
-            onChange={(e) => handleChange("search", e.target.value)}
-            className={styles.searchInput}
-          />
-        </div>
+        <img
+          src="/images/search.svg"
+          alt=""
+          className={styles.searchIcon}
+          aria-hidden="true"
+        />
+        <input
+          type="search"
+          placeholder="Поиск"
+          value={filters.search || ""}
+          onChange={(event) => handleChange("search", event.target.value)}
+          className={styles.searchInput}
+        />
+      </div>
 
       <div className={styles.filtersRow}>
-        <Dropdown
-          label="Подход"
-          value={filters.approach}
-          onChange={(val) => handleChange("approach", val)}
-          options={[
-            "КПТ",
-            "Гештальт-терапия",
-            "Психоанализ",
-            "Экзистенциальная терапия",
-            "Интегративная терапия",
-          ]}
-        />
+        {FILTER_FIELDS.map((field) => renderDropdown(field))}
 
-        <Dropdown
-          label="Тип"
-          value={filters.type}
-          onChange={(val) => handleChange("type", val)}
-          options={[
-            "Эмоциональные состояния",
-            "Отношения, взаимодействия",
-            "Личностное развитие",
-            "Учеба и работа",
-            "Процесс психотерапии",
-            "Тревога и страхи",
-            "Тело, психосоматика",
-          ]}
-        />
-
-        <Dropdown
-          label="Возраст"
-          value={filters.age}
-          onChange={(val) => handleChange("age", val)}
-          options={["Детство", "Подросток", "Взрослый", "Пожилой"]}
-        />
-
-        <Dropdown
-          label="Пол"
-          value={filters.gender}
-          onChange={(val) => handleChange("gender", val)}
-          options={["Женский", "Мужской"]}
-        />
-
-        <Dropdown
-          label="Формат"
-          value={filters.format}
-          onChange={(val) => handleChange("format", val)}
-          options={["Недавняя", "Длительная", "Первая сессия"]}
-        />
-
-        {hasActiveFilters && (
+        {hasActiveFilters ? (
           <button
             type="button"
             className={styles.clearFilters}
@@ -145,15 +178,55 @@ export function Filters({ filters, setFilters }) {
           >
             Очистить фильтры
           </button>
-        )}
+        ) : null}
 
-        <Dropdown
-          label="Сортировать по"
-          value={filters.sort}
-          onChange={(val) => handleChange("sort", val)}
-          options={["Сначала новые", "Сначала старые"]}
-        />
+        {renderDropdown(SORT_FIELD)}
       </div>
+
+      {mobile ? (
+        <>
+          {!mobileOpen ? (
+            <div className={styles.collapsed}>
+              {renderDropdown(SORT_FIELD, { withIcon: true })}
+              <button
+                type="button"
+                className={styles.toggle}
+                onClick={() => setMobileOpen(true)}
+              >
+                Все фильтры
+              </button>
+            </div>
+          ) : (
+            <div className={styles.expanded}>
+              <div className={styles.expandedList}>
+                {FILTER_FIELDS.map((field) =>
+                  renderDropdown(field, { fullWidth: true })
+                )}
+                {renderDropdown(SORT_FIELD, { fullWidth: true })}
+              </div>
+
+              <div className={styles.expandedFooter}>
+                {hasActiveFilters ? (
+                  <button
+                    type="button"
+                    className={styles.clearMobile}
+                    onClick={resetFilters}
+                  >
+                    Очистить фильтры
+                  </button>
+                ) : null}
+                <button
+                  type="button"
+                  className={styles.toggle}
+                  onClick={() => setMobileOpen(false)}
+                >
+                  Скрыть фильтры
+                </button>
+              </div>
+            </div>
+          )}
+        </>
+      ) : null}
     </div>
   );
 }

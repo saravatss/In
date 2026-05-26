@@ -7,3 +7,14 @@
 .navLink:hover {
   opacity: 0.6;
 }
+
+@media (max-width: 766px) {
+  .navLink {
+    font-family: Manrope, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: -0.02em;
+    white-space: nowrap;
+  }
+}

@@ -2,8 +2,16 @@
   display: block;
   width: 100%;
   max-width: 1170px;
+  margin-inline: auto;
   text-decoration: none;
   color: inherit;
+  transform-origin: center center;
+  transition: transform 0.25s ease;
+}
+
+.cardLink:hover,
+.cardLink:focus-visible {
+  transform: scale(1.015);
 }
 
 .card {
@@ -15,6 +23,7 @@
   padding: 20px 24px;
   border-radius: 32px;
   background: rgba(205, 228, 203, 0.3);
+  transition: background-color 0.25s ease;
 }
 
 .content {
@@ -57,7 +66,6 @@
   transition: background-color 0.2s ease, color 0.2s ease, padding 0.2s ease;
 }
 
-/* Portrait */
 .portrait {
   position: relative;
   flex-shrink: 0;
@@ -100,14 +108,14 @@
   pointer-events: none;
 }
 
-/* Tablet — Figma 591:6047 */
 @media (min-width: 768px) {
   .card {
     flex-direction: row;
     align-items: center;
-    gap: 56px;
-    max-width: 786px;
-    padding: 32px 40px 32px 29px;
+    gap: clamp(32px, 5vw, 56px);
+    width: 100%;
+    max-width: none;
+    padding: 32px clamp(24px, 4vw, 40px) 32px clamp(20px, 3.5vw, 29px);
     border-radius: 40px;
   }
 
@@ -156,8 +164,51 @@
   }
 }
 
-/* Desktop — Figma 860:10279, 279:2518 */
+@media (min-width: 768px) and (max-width: 1279px) {
+  .portrait {
+    width: clamp(218px, 28vw, 340px);
+    height: clamp(208px, 26.5vw, 300px);
+  }
+
+  .circleOuter {
+    top: 10.1%;
+    width: 95.9%;
+    height: auto;
+    aspect-ratio: 1;
+  }
+
+  .circleInner {
+    top: 22.6%;
+    width: 84%;
+    height: auto;
+    aspect-ratio: 1;
+  }
+
+  .photo {
+    top: 8.7%;
+    left: 50%;
+    width: 86.7%;
+    height: auto;
+    aspect-ratio: 1;
+    object-fit: cover;
+  }
+
+  .textBlock {
+    width: 100%;
+  }
+
+  .readButton {
+    padding: clamp(8px, 1vw, 12px) clamp(16px, 2.5vw, 24px);
+    font-size: clamp(16px, 1.6vw, 18px);
+  }
+}
+
 @media (min-width: 1280px) {
+  .cardLink:hover,
+  .cardLink:focus-visible {
+    transform: scale(1.02);
+  }
+
   .cardLink:hover .readButton {
     background: var(--black-200);
     color: var(--white);

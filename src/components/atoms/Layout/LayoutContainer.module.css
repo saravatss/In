@@ -1,16 +1,18 @@
 .container {
-  padding: 16px 24px; /* mobile */
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  padding: 16px 24px;
   margin: 0 auto;
+  box-sizing: border-box;
 }
 
-/* tablet */
-@media (min-width: 768px) {
+@media (min-width: 767px) {
   .container {
     padding: 24px;
   }
 }
 
-/* desktop */
 @media (min-width: 1024px) {
   .container {
     padding: 40px;

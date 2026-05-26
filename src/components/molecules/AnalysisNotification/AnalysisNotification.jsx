@@ -113,6 +113,7 @@ export function AnalysisToast({ toast, onClose }) {
   if (!toast) return null;
 
   const isExport = toast.variant === "export-success";
+  const isCopied = toast.variant === "copied";
   const isError = toast.variant === "send-error";
 
   return (
@@ -124,14 +125,18 @@ export function AnalysisToast({ toast, onClose }) {
             ? "Ошибка отправки"
             : isExport
               ? "Успешно скачано!"
-              : "Успешно отправлено!"}
+              : isCopied
+                ? "Успешно скопировано!"
+                : "Успешно отправлено!"}
         </p>
         <p className={styles.toastSubtitle}>
           {isError
             ? toast.message || "Попробуйте ещё раз"
             : isExport
               ? "Проверьте загрузки"
-              : "Проверьте телеграм-бот"}
+              : isCopied
+                ? "Проверьте буфер обмена"
+                : "Проверьте телеграм-бот"}
         </p>
       </div>
       <button

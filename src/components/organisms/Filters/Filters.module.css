@@ -1,5 +1,7 @@
 .wrapper {
   margin: 0;
+  width: 100%;
+  min-width: 0;
 }
 
 .searchWrapper {
@@ -9,12 +11,21 @@
 
 .searchInput {
   width: 100%;
+  box-sizing: border-box;
   padding: 18px 32px 18px 56px;
   border-radius: 32px;
   border: none;
-  background: #F7EFF5;
+  background: #f7eff5;
+  font-family: Manrope, sans-serif;
   font-size: 20px;
+  font-weight: 400;
+  line-height: normal;
+  color: var(--black-200);
   outline: none;
+}
+
+.searchInput::placeholder {
+  color: var(--black-200);
 }
 
 .searchIcon {
@@ -23,6 +34,7 @@
   top: 50%;
   transform: translateY(-50%);
   width: 18px;
+  height: 18px;
   pointer-events: none;
 }
 
@@ -31,6 +43,11 @@
   gap: 8px;
   flex-wrap: wrap;
   align-items: center;
+}
+
+.collapsed,
+.expanded {
+  display: none;
 }
 
 .dropdown {
@@ -42,17 +59,50 @@
   align-items: center;
   justify-content: space-between;
   gap: 12px;
+  width: 100%;
   padding: 12px 20px;
   border-radius: 40px;
   border: none;
-  background: #F7EFF5;
+  background: #f7eff5;
   cursor: pointer;
+  font-family: Manrope, sans-serif;
   font-size: 14px;
+  font-weight: 500;
+  line-height: normal;
+  color: var(--black-200);
   min-width: 180px;
+  box-sizing: border-box;
+}
+
+.dropdownButtonWithIcon {
+  justify-content: center;
+  gap: 4px;
+  width: auto;
+  min-width: 0;
+  padding: 12px 32px;
+}
+
+.dropdownLabel {
+  flex: 1 1 auto;
+  min-width: 0;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.dropdownButtonWithIcon .dropdownLabel {
+  flex: 0 1 auto;
+}
+
+.filterIcon {
+  width: 13px;
+  height: 13px;
+  flex-shrink: 0;
 }
 
 .arrow {
   width: 14px;
+  height: 14px;
+  flex-shrink: 0;
   transition: transform 0.2s ease;
 }
 
@@ -62,34 +112,153 @@
 
 .dropdownMenu {
   position: absolute;
-  top: 110%;
+  top: calc(100% + 4px);
   left: 0;
-  background: #F7EFF5;
+  right: 0;
+  background: #f7eff5;
   border-radius: 20px;
   padding: 8px 0;
-  min-width: 220px;
-  z-index: 10;
+  min-width: 100%;
+  z-index: 20;
+  box-shadow: 0 8px 24px rgba(43, 42, 47, 0.08);
 }
 
 .dropdownItem {
+  display: block;
+  width: 100%;
   padding: 10px 16px;
+  border: none;
+  background: transparent;
   cursor: pointer;
+  font-family: Manrope, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: normal;
+  color: var(--black-200);
+  text-align: left;
 }
 
 .dropdownItem:hover {
-  background: var(--black-400);
+  background: rgba(43, 42, 47, 0.06);
 }
 
 .clearFilters {
   background: transparent;
   border: none;
   cursor: pointer;
+  font-family: Manrope, sans-serif;
   font-size: 14px;
-  color:var(--black-400);
+  font-weight: 500;
+  color: var(--black-100);
   padding: 12px 4px;
-  transition: 0.2s ease;
+  transition: opacity 0.2s ease;
 }
 
 .clearFilters:hover {
-  color:var(--black-400);
+  opacity: 0.7;
+}
+
+@media (max-width: 766px) {
+  .wrapperMobile .searchWrapper {
+    margin-bottom: 8px;
+  }
+
+  .wrapperMobile .searchInput {
+    height: 44px;
+    padding: 12px 32px 12px 56px;
+    border-radius: 64px;
+    background: rgba(238, 220, 238, 0.4);
+    font-size: 16px;
+  }
+
+  .wrapperMobile .searchIcon {
+    left: 32px;
+    width: 16px;
+    height: 16px;
+  }
+
+  .wrapperMobile .filtersRow {
+    display: none;
+  }
+
+  .wrapperMobile .collapsed {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    min-width: 0;
+  }
+
+  .wrapperMobile .expanded {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+    min-width: 0;
+  }
+
+  .wrapperMobile .expandedList {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+  }
+
+  .wrapperMobile .dropdownFull {
+    width: 100%;
+  }
+
+  .wrapperMobile .dropdownFull .dropdownButton {
+    width: 100%;
+    min-width: 0;
+    padding: 12px 32px;
+    background: rgba(238, 220, 238, 0.4);
+    border-radius: 40px;
+  }
+
+  .wrapperMobile .dropdownFull .dropdownMenu {
+    width: 100%;
+    background: rgba(238, 220, 238, 0.4);
+  }
+
+  .wrapperMobile .collapsed .dropdownButton {
+    background: rgba(238, 220, 238, 0.4);
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  .wrapperMobile .toggle {
+    margin-left: auto;
+    padding: 0;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-family: Manrope, sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: normal;
+    color: var(--black-200);
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .wrapperMobile .expandedFooter {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    width: 100%;
+    padding-top: 4px;
+  }
+
+  .wrapperMobile .clearMobile {
+    padding: 0;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-family: Manrope, sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--black-100);
+  }
 }

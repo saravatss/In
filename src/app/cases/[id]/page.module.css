@@ -4,7 +4,16 @@
   align-items: center;
 }
 
-/* ================= DESKTOP ================= */
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 128px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+}
 
 .headerBlock {
   display: flex;
@@ -70,24 +79,15 @@
   line-height: 1.85;
   font-size: 18px;
   color: var(--black-400);
-  margin: 48px auto 0;
+  margin: 48px auto 56px;
 }
 
 
-/* Абзацы */
 .content p {
   margin-bottom: 28px;
 }
 
 
-.content h2 {
-  font-size: 30px;
-  font-weight: 600;
-  margin-top: 72px;
-  margin-bottom: 24px;
-}
-
-/* Списки */
 .content ul {
   margin: 32px 0;
   padding-left: 24px;
@@ -111,41 +111,11 @@
 
 
 .content h2 {
+  font-size: 30px;
+  font-weight: 600;
   margin-top: 40px;
   margin-bottom: 16px;
 }
-
-.date {
-    background-color: var(--green-400);
-    padding: 4px;
-}
-
-.share {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  cursor: pointer;
-}
-
-.shareText {
-  font-size: 16px;
-}
-
-.shareIcon {
-  width: 32px;
-  height: 32px;
-}
-
-.footerRow {
-  margin-top: 60px;
-  display: flex;
-  justify-content: space-between;
-  font-size: 24px;
-  color: var(--black-400);
-  font-weight: 700;
-}
-
-/* ================= TABLET ================= */
 
 @media (max-width: 1024px) {
   .headerBlock {
@@ -168,9 +138,11 @@
   }
 }
 
-/* ================= MOBILE ================= */
 
 @media (max-width: 768px) {
+  .page {
+    gap: 64px;
+  }
 
   .title {
     font-size: 28px;
@@ -190,14 +162,8 @@
     font-size: 16px;
   }
 
-  .footerRow {
-    flex-direction: column;
-    gap: 12px;
-    align-items: flex-start;
-  }
 }
 
-/* ================= SMALL MOBILE ================= */
 
 @media (max-width: 480px) {
   .page {
