@@ -11,7 +11,7 @@ export async function sendAnalysisToTelegram(payload) {
     return {
       ok: false,
       error:
-        "Telegram не настроен. Добавьте TELEGRAM_BOT_TOKEN и TELEGRAM_CHAT_ID в .env.local",
+        "Telegram не настроен. Добавьте TELEGRAM_BOT_TOKEN и TELEGRAM_CHAT_ID в переменные окружения (локально — .env.local, на Vercel — Settings → Environment Variables), затем перезапустите или передеплойте проект.",
     };
   }
 
