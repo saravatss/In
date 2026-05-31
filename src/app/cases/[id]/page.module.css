@@ -30,6 +30,7 @@
 .right {
   width: 420px;
   flex-shrink: 0;
+  min-width: 0;
 }
 
 .authorRow {
@@ -61,12 +62,15 @@
   gap: 8px;
   margin-bottom: 20px;
   flex-wrap: wrap;
+  width: 100%;
+  min-width: 0;
 }
 
 .tag {
   padding: 6px 14px;
   border-radius: 20px;
   font-size: 14px;
+  max-width: 100%;
 }
 
 .previewImage {
@@ -156,6 +160,8 @@
   .tag {
     font-size: 13px;
     padding: 5px 12px;
+    white-space: normal;
+    word-break: break-word;
   }
 
   .content {
@@ -166,10 +172,6 @@
 
 
 @media (max-width: 480px) {
-  .page {
-    padding: 40px 14px;
-  }
-
   .title {
     font-size: 24px;
   }

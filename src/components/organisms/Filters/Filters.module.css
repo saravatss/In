@@ -159,22 +159,20 @@
 }
 
 @media (max-width: 766px) {
-  .wrapperMobile .searchWrapper {
+  .searchWrapper {
     margin-bottom: 8px;
   }
 
-  .wrapperMobile .searchInput {
-    height: 44px;
-    padding: 12px 32px 12px 56px;
-    border-radius: 64px;
-    background: var(--grey-100);
-    font-size: 16px;
+  .searchInput {
+    padding: 12px 32px 12px 44px;
+    border-radius: 40px;
+    font-size: 14px;
   }
 
-  .wrapperMobile .searchIcon {
-    left: 32px;
-    width: 16px;
-    height: 16px;
+  .searchIcon {
+    left: 20px;
+    width: 14px;
+    height: 14px;
   }
 
   .wrapperMobile .filtersRow {

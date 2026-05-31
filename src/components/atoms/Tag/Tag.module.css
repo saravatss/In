@@ -6,3 +6,11 @@
   white-space: nowrap;
   color: #95949A;
 }
+
+@media (max-width: 767px) {
+  .tag {
+    max-width: 100%;
+    white-space: normal;
+    word-break: break-word;
+  }
+}
