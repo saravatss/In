@@ -1,3 +1,4 @@
+import Link from "next/link";
 import styles from "./Button.module.css";
 
 export const BUTTON_ARROW_ICON = "/images/arrowHorizontal.svg";
@@ -10,20 +11,19 @@ export function Button({
   iconPosition = "right",
   className = "",
   disabled = false,
+  href,
   ...props
 }) {
-  return (
-    <button
-      className={`
+  const classes = `
         ${styles.button}
         ${styles[variant]}
         ${styles[size]}
         ${icon ? styles.withIcon : ""}
         ${className}
-      `.trim()}
-      disabled={disabled}
-      {...props}
-    >
+      `.trim();
+
+  const content = (
+    <>
       {icon && iconPosition === "left" && (
         <img src={icon} alt="" className={styles.icon} aria-hidden="true" />
       )}
@@ -33,6 +33,24 @@ export function Button({
       {icon && iconPosition === "right" && (
         <img src={icon} alt="" className={styles.icon} aria-hidden="true" />
       )}
+    </>
+  );
+
+  if (href) {
+    return (
+      <Link href={href} className={classes} {...props}>
+        {content}
+      </Link>
+    );
+  }
+
+  return (
+    <button
+      className={classes}
+      disabled={disabled}
+      {...props}
+    >
+      {content}
     </button>
   );
 }

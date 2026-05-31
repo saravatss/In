@@ -15,7 +15,7 @@
   padding: 18px 32px 18px 56px;
   border-radius: 32px;
   border: none;
-  background: #f7eff5;
+  background: var(--grey-100);
   font-family: Manrope, sans-serif;
   font-size: 20px;
   font-weight: 400;
@@ -63,7 +63,7 @@
   padding: 12px 20px;
   border-radius: 40px;
   border: none;
-  background: #f7eff5;
+  background: var(--grey-100);
   cursor: pointer;
   font-family: Manrope, sans-serif;
   font-size: 14px;
@@ -115,7 +115,7 @@
   top: calc(100% + 4px);
   left: 0;
   right: 0;
-  background: #f7eff5;
+  background: var(--grey-100);
   border-radius: 20px;
   padding: 8px 0;
   min-width: 100%;
@@ -167,7 +167,7 @@
     height: 44px;
     padding: 12px 32px 12px 56px;
     border-radius: 64px;
-    background: rgba(238, 220, 238, 0.4);
+    background: var(--grey-100);
     font-size: 16px;
   }
 
@@ -212,17 +212,17 @@
     width: 100%;
     min-width: 0;
     padding: 12px 32px;
-    background: rgba(238, 220, 238, 0.4);
+    background: var(--grey-100);
     border-radius: 40px;
   }
 
   .wrapperMobile .dropdownFull .dropdownMenu {
     width: 100%;
-    background: rgba(238, 220, 238, 0.4);
+    background: var(--grey-100);
   }
 
   .wrapperMobile .collapsed .dropdownButton {
-    background: rgba(238, 220, 238, 0.4);
+    background: var(--grey-100);
     font-size: 14px;
     font-weight: 600;
   }

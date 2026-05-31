@@ -409,7 +409,7 @@
 
 .sendSection {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   gap: 32px;
   align-items: flex-end;
   justify-content: flex-end;
@@ -421,9 +421,9 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
-  flex: 1 1 auto;
+  flex: 0 0 auto;
+  width: 198px;
   min-width: 0;
-  max-width: 100%;
 }
 
 .telegramLabel {
@@ -437,7 +437,6 @@
 
 .telegramInput {
   width: 100%;
-  max-width: 198px;
   padding: 8px 16px;
   border: 1px solid rgba(43, 42, 47, 0.3);
   border-radius: 8px;
@@ -456,9 +455,8 @@
 }
 
 .sendButton {
-  min-width: min(287px, 100%);
-  max-width: 100%;
-  flex-shrink: 1;
+  width: 287px;
+  flex: 0 0 auto;
 }
 
 @media (max-width: 766px) {
@@ -834,8 +832,8 @@
   }
 
   .sendButton {
-    min-width: min(220px, 100%);
-    max-width: 100%;
+    width: min(287px, 100%);
+    flex: 0 0 auto;
   }
 }
 

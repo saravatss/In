@@ -20,6 +20,7 @@ export function CasesSection({
       {showButton && (
         <div className={styles.buttonWrapper}>
           <Button
+            href="/cases"
             variant="primary"
             size="lg"
             icon={BUTTON_ARROW_ICON}

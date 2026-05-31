@@ -299,9 +299,9 @@ export function TemplateLayout({
               <div className={styles.examples}>
                 <p className={styles.examplesLabel}>Примеры заполнения</p>
                 <div className={styles.exampleChips}>
-                  {currentSection.examples.map((example) => (
+                  {currentSection.examples.map((example, index) => (
                     <button
-                      key={example}
+                      key={`${index}-${example}`}
                       type="button"
                       className={styles.exampleChip}
                       onClick={() => applyExample(example)}
